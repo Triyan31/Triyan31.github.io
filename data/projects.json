@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-15",
+  "projects": [
+    {
+      "id": "campus-iam",
+      "source": "curated",
+      "visibility": "private",
+      "status": "active",
+      "label": "PRIVATE · ACTIVE",
+      "symbol": "ID",
+      "title": "Higher-Education Identity & Access Platform",
+      "description": "Centralized SSO/IAM for higher-education applications with delegated administration, authorization controls, and auditability.",
+      "tags": ["Django", "Vue", "Keycloak", "OIDC"],
+      "featured": true
+    },
+    {
+      "id": "eximcheck",
+      "source": "curated",
+      "visibility": "private",
+      "status": "product",
+      "label": "PRIVATE · PRODUCT",
+      "symbol": "EX",
+      "title": "EximCheck",
+      "description": "Export/import document validation and workflow product under active development toward commercial collaboration.",
+      "tags": ["Document Validation", "Workflow", "Product"]
+    },
+    {
+      "id": "lumina-ojs-theme",
+      "source": "github",
+      "tracked": true,
+      "visibility": "public",
+      "status": "open-work",
+      "label": "PUBLIC · OPEN WORK",
+      "symbol": "LU",
+      "title": "Lumina OJS Theme",
+      "description": "Theme-development work for Open Journal Systems and academic publishing environments.",
+      "url": "https://github.com/Triyan31/lumina-ojs-theme",
+      "repo": "Triyan31/lumina-ojs-theme",
+      "tags": ["OJS", "PHP", "UI"]
+    },
+    {
+      "id": "shuttle-imbalance-bench",
+      "source": "github",
+      "tracked": true,
+      "visibility": "public",
+      "status": "research",
+      "label": "PUBLIC · RESEARCH",
+      "symbol": "ML",
+      "title": "Shuttle Imbalance Bench",
+      "description": "Research implementation for multiclass imbalanced-data classification.",
+      "url": "https://github.com/Triyan31/shuttle-imbalance-bench",
+      "repo": "Triyan31/shuttle-imbalance-bench",
+      "tags": ["Python", "SMOTE", "Random Forest"]
+    }
+  ]
+}
