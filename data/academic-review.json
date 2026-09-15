@@ -1,56 +1,184 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-09-15T06:31:30.665775+00:00",
+  "schema_version": 2,
+  "generated_at": "2026-09-15T06:51:11.332114+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
+    "auto_delete": false,
+    "auto_mutate_public_records": false,
     "name_match_is_proof": false,
-    "verified_publications_mutated": false,
-    "review_required": true
+    "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
+    "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
+    "title_similarity_threshold": 0.88,
+    "review_required_for_mismatch": true
   },
-  "verified_doi_validation": [
+  "verification_summary": {
+    "total_public_records": 5,
+    "machine_verified": 3,
+    "manual_verified": 2,
+    "needs_review": 0
+  },
+  "publication_verification": [
     {
+      "id": "digital-activity-location-clustering",
+      "title": "Digital Activity Location Clustering Based on Twitter Geospatial Data for Spatiotemporal Business Intelligence",
       "doi": "10.26798/jiss.v4i1.2005",
-      "status": "resolved",
-      "crossref_title": "DIGITAL ACTIVITY LOCATION CLUSTERING BASED ON TWITTER GEOSPATIAL DATA FOR SPATIOTEMPORAL BUSINESS INTELLIGENCE",
-      "crossref_year": 2025,
-      "crossref_authors": [
-        "Triyan Agung Laksono",
-        "Widyastuti Andriyani",
-        "Fadhlih Girindra Putra",
-        "Ivonia Fatima Ruas da silva",
-        "Wiwi Widayani"
+      "current_status": "verified",
+      "evidence": [
+        {
+          "source": "crossref",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "DIGITAL ACTIVITY LOCATION CLUSTERING BASED ON TWITTER GEOSPATIAL DATA FOR SPATIOTEMPORAL BUSINESS INTELLIGENCE",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Widyastuti Andriyani",
+            "Fadhlih Girindra Putra",
+            "Ivonia Fatima Ruas da silva",
+            "Wiwi Widayani"
+          ]
+        },
+        {
+          "source": "openalex",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "DIGITAL ACTIVITY LOCATION CLUSTERING BASED ON TWITTER GEOSPATIAL DATA FOR SPATIOTEMPORAL BUSINESS INTELLIGENCE",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Widyastuti Andriyani",
+            "Fadhlih Girindra Putra",
+            "Ivonia Fatima Ruas da silva",
+            "Wiwi Widayani"
+          ]
+        }
       ],
-      "publisher": "Indonesian Digital Technology University",
-      "type": "journal-article"
+      "recommended_status": "verified",
+      "reason": "DOI, title, author identity, and year match the primary bibliographic source.",
+      "status_changed": false
     },
     {
+      "id": "stroke-prediction-imbalanced-data",
+      "title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
       "doi": "10.1109/isriti68345.2025.11393348",
-      "status": "resolved",
-      "crossref_title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
-      "crossref_year": 2025,
-      "crossref_authors": [
-        "Triyan Agung Laksono",
-        "Widyastuti Andriyani"
+      "current_status": "verified",
+      "evidence": [
+        {
+          "source": "crossref",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Widyastuti Andriyani"
+          ]
+        },
+        {
+          "source": "openalex",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Widyastuti Andriyani"
+          ]
+        }
       ],
-      "publisher": "IEEE",
-      "type": "proceedings-article"
+      "recommended_status": "verified",
+      "reason": "DOI, title, author identity, and year match the primary bibliographic source.",
+      "status_changed": false
     },
     {
+      "id": "statlog-shuttle-multiclass",
+      "title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
       "doi": "10.1109/isriti68345.2025.11393262",
-      "status": "resolved",
-      "crossref_title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
-      "crossref_year": 2025,
-      "crossref_authors": [
-        "Triyan Agung Laksono",
-        "Bambang Purnomosidi Dwi Putranto",
-        "Dini Fakta Sari",
-        "Deborah Kurniawati",
-        "Ali Impron",
-        "Adi Kusjani"
+      "current_status": "verified",
+      "evidence": [
+        {
+          "source": "crossref",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Bambang Purnomosidi Dwi Putranto",
+            "Dini Fakta Sari",
+            "Deborah Kurniawati",
+            "Ali Impron",
+            "Adi Kusjani"
+          ]
+        },
+        {
+          "source": "openalex",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Bambang Purnomosidi Dwi Putranto",
+            "Dini Fakta Sari",
+            "Deborah Kurniawati",
+            "Ali Impron",
+            "Adi Kusjani"
+          ]
+        }
       ],
-      "publisher": "IEEE",
-      "type": "proceedings-article"
+      "recommended_status": "verified",
+      "reason": "DOI, title, author identity, and year match the primary bibliographic source.",
+      "status_changed": false
+    },
+    {
+      "id": "airflow-vs-spark-academic-outcomes",
+      "title": "Perbandingan Apache Airflow dan Apache Spark dalam Proses ETL untuk Memprediksi DropOut dan Keberhasilan Akademik Mahasiswa",
+      "doi": null,
+      "current_status": "verified",
+      "evidence": [],
+      "recommended_status": "manual_verified",
+      "reason": "No DOI is recorded; retain only with direct publisher/manual evidence."
+    },
+    {
+      "id": "hyperparameter-tuning-socioeconomic-academic-analysis",
+      "title": "Hyperparameter Tuning Modeling for Socioeconomic based Academic Analysis",
+      "doi": null,
+      "current_status": "verified",
+      "evidence": [],
+      "recommended_status": "manual_verified",
+      "reason": "No DOI is recorded; retain only with direct publisher/manual evidence."
     }
   ],
   "discovered_candidates": [
@@ -65,7 +193,10 @@
       "publisher": "Politeknik Negeri Malang",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Agung Laksono",
+      "author_similarity": 0.7879,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.64628/aan.vjxq6jv6a",
@@ -78,7 +209,10 @@
       "publisher": "The Conversation",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Agung Laksono",
+      "author_similarity": 0.7879,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.31227/osf.io/rvzhc",
@@ -91,7 +225,10 @@
       "publisher": "Center for Open Science",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.31227/osf.io/sargw",
@@ -104,7 +241,10 @@
       "publisher": "Center for Open Science",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.34306/att.v5i2.294",
@@ -117,7 +257,10 @@
       "publisher": "Pandawan",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Ade Agung Laksono",
+      "author_similarity": 0.8108,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.63068/revenue.v2i2.62",
@@ -130,7 +273,10 @@
       "publisher": "Asosiasi Riset dan Pengembangan Manusia Berkelanjutan (ORBIT)",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Tri Agung Hari Laksono",
+      "author_similarity": 0.8095,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.37641/jiakes.v10i2.1329",
@@ -144,7 +290,10 @@
       "publisher": "Institut Bisnis dan Informatika Kesatuan",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Agung Laksono",
+      "author_similarity": 0.7879,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.1063/1.5016026",
@@ -158,7 +307,10 @@
       "publisher": "Author(s)",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Tomy Agung Laksono",
+      "author_similarity": 0.8421,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.36546/jm.v9i4.499",
@@ -172,7 +324,10 @@
       "publisher": "Universitas Palembang",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Agung Laksono",
+      "author_similarity": 0.7879,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.24815/jpsi.v10i3.24100",
@@ -186,21 +341,10 @@
       "publisher": "LPPM Universitas Syiah Kuala",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
-    },
-    {
-      "doi": "10.33258/biolae.v5i2.986",
-      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
-      "year": 2023,
-      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
-      "authors": [
-        "Agung Tri Laksono",
-        "Else Liliani"
-      ],
-      "publisher": "Budapest International Research and Critics Institute",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Agung Laksono",
+      "author_similarity": 0.7879,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.35316/icorhestech.v1i1.5697",
@@ -214,49 +358,10 @@
       "publisher": "LP2M Universitas Ibrahimy",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
-    },
-    {
-      "doi": "10.1016/j.cegh.2025.102201",
-      "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
-      "year": 2025,
-      "venue": "Clinical Epidemiology and Global Health",
-      "authors": [
-        "Paisal Paisal",
-        "Agung Dwi Laksono"
-      ],
-      "publisher": "Elsevier BV",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
-    },
-    {
-      "doi": "10.31227/osf.io/qh94p",
-      "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
-      "year": 2019,
-      "venue": null,
-      "authors": [
-        "Agung Dwi Laksono",
-        "Hario Megatsari"
-      ],
-      "publisher": "Center for Open Science",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
-    },
-    {
-      "doi": "10.46369/logistik.v12i2.2814",
-      "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
-      "year": 2022,
-      "venue": "Jurnal Logistik Bisnis",
-      "authors": [
-        "Darfial Guslan",
-        "Didi Agung Laksono"
-      ],
-      "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Pria Agung Laksono",
+      "author_similarity": 0.8947,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.59324/ejaset.2024.2(2).03",
@@ -270,21 +375,95 @@
       "publisher": "AMO Publisher",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": true,
+      "matched_author": "Dwiaji Agung Laksono",
+      "author_similarity": 0.8,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
-      "doi": "10.24076/joism.2020v1i2.443",
-      "title": "METODE MYER BRIGGS TYPE INDICATOR (MBTI) UNTUK TES KEPRIBADIAN SEBAGAI MEDIA PENGEMBANGAN DIRI",
-      "year": 2020,
-      "venue": "Journal of Information System Management (JOISM)",
+      "doi": "10.1016/j.cegh.2025.102201",
+      "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
+      "year": 2025,
+      "venue": "Clinical Epidemiology and Global Health",
       "authors": [
-        "Wisnu Agung Laksono",
-        "Yuli Astuti"
+        "Paisal Paisal",
+        "Agung Dwi Laksono"
       ],
-      "publisher": "STMIK AMIKOM Yogyakarta",
+      "publisher": "Elsevier BV",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.33258/biolae.v5i2.986",
+      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
+      "year": 2023,
+      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+      "authors": [
+        "Agung Tri Laksono",
+        "Else Liliani"
+      ],
+      "publisher": "Budapest International Research and Critics Institute",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.31227/osf.io/qh94p",
+      "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
+      "year": 2019,
+      "venue": null,
+      "authors": [
+        "Agung Dwi Laksono",
+        "Hario Megatsari"
+      ],
+      "publisher": "Center for Open Science",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.46369/logistik.v12i2.2814",
+      "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
+      "year": 2022,
+      "venue": "Jurnal Logistik Bisnis",
+      "authors": [
+        "Darfial Guslan",
+        "Didi Agung Laksono"
+      ],
+      "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": true,
+      "matched_author": "Didi Agung Laksono",
+      "author_similarity": 0.7895,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.37742/jo.v3i2.72",
+      "title": "Ketersediaan Infrastruktur Olahraga dan Dukungan Pimpinan terhadap Frekuensi Partisipasi Olahraga",
+      "year": 2017,
+      "venue": "Jurnal Olahraga",
+      "authors": [
+        "Sandi Dwi Triono",
+        "Agung Laksono"
+      ],
+      "publisher": "STKIP Pasundan",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": true,
+      "matched_author": "Agung Laksono",
+      "author_similarity": 0.7879,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     }
   ]
 }
