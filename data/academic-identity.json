@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-15",
+  "person": {
+    "name": "Triyan Agung Laksono",
+    "verification_policy": "Do not claim an identifier or publication from name matching alone. New records require corroboration from an existing verified identifier, DOI/publisher metadata, affiliation, or manual review."
+  },
+  "identifiers": {
+    "google_scholar": {
+      "id": "Xi-AIG4AAAAJ",
+      "status": "verified",
+      "profile_url": "https://scholar.google.co.id/citations?user=Xi-AIG4AAAAJ&hl=id"
+    },
+    "sinta": {
+      "id": "6989433",
+      "status": "verified",
+      "profile_url": "https://sinta.kemdiktisaintek.go.id/authors/profile/6989433"
+    },
+    "ieee_author": {
+      "id": "759850393601369",
+      "status": "verified",
+      "profile_url": "https://ieeexplore.ieee.org/author/759850393601369"
+    },
+    "garuda": {
+      "id": "11168240",
+      "status": "verified",
+      "profile_url": "https://garuda.kemdiktisaintek.go.id/author/view/11168240"
+    },
+    "researchgate": {
+      "id": "Triyan-Laksono",
+      "status": "verified",
+      "profile_url": "https://www.researchgate.net/profile/Triyan-Laksono"
+    },
+    "orcid": {
+      "id": null,
+      "status": "unverified"
+    },
+    "scopus_author": {
+      "id": null,
+      "status": "unverified"
+    }
+  }
+}
