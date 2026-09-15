@@ -27,20 +27,27 @@ jobs:
       - name: Run safe academic discovery
         run: python scripts/sync_academic.py
 
+      - name: Apply explicit review decisions
+        run: python scripts/apply_academic_decisions.py
+
+      - name: Refresh review after decisions
+        run: python scripts/sync_academic.py
+
       - name: Validate JSON outputs
         run: |
           python -m json.tool data/academic-identity.json >/dev/null
           python -m json.tool data/publications.json >/dev/null
           python -m json.tool data/academic-review.json >/dev/null
+          python -m json.tool data/academic-decisions.json >/dev/null
 
-      - name: Commit review data when changed
+      - name: Commit academic data when changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/academic-review.json
+          git add data/academic-review.json data/academic-decisions.json data/publications.json
           if git diff --cached --quiet; then
-            echo "No academic review changes."
+            echo "No academic data changes."
           else
-            git commit -m "chore: refresh academic metadata review"
+            git commit -m "chore: apply academic review decisions"
             git push
           fi
