@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""Safe academic metadata sync.
+"""Evidence-based academic metadata verification.
 
-Policy:
-- Existing verified DOI records may be enriched from Crossref.
-- Name-only search results are discovery candidates only.
-- Discovery NEVER auto-publishes into publications.json.
-- Unknown records are written to data/academic-review.json for manual review.
+Safety policy:
+- Public publications are never auto-deleted or silently rewritten.
+- DOI records are checked against Crossref and, when available, OpenAlex.
+- Verification compares DOI, normalized title, author identity, and year.
+- Ambiguous/mismatched records go to data/academic-review.json.
+- Name-only discoveries are always needs_review and never auto-published.
+- DOI-less publisher records remain manual-review records.
 """
 from __future__ import annotations
 
+import difflib
 import json
 import pathlib
+import re
+import unicodedata
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -20,7 +25,8 @@ DATA = ROOT / "data"
 PUBS = DATA / "publications.json"
 IDENTITY = DATA / "academic-identity.json"
 REVIEW = DATA / "academic-review.json"
-USER_AGENT = "Triyan31-academic-sync/1.0 (GitHub Pages academic portfolio)"
+USER_AGENT = "Triyan31-academic-sync/2.0 (GitHub Pages academic portfolio)"
+TITLE_THRESHOLD = 0.88
 
 
 def load(path):
@@ -28,9 +34,9 @@ def load(path):
 
 
 def get_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=25) as r:
-        return json.load(r)
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=25) as response:
+        return json.load(response)
 
 
 def crossref_doi(doi):
@@ -39,23 +45,47 @@ def crossref_doi(doi):
 
 
 def crossref_author(name, rows=20):
-    q = urllib.parse.urlencode({"query.author": name, "rows": rows})
-    return get_json(f"https://api.crossref.org/v1/works?{q}")["message"]["items"]
+    query = urllib.parse.urlencode({"query.author": name, "rows": rows})
+    return get_json(f"https://api.crossref.org/v1/works?{query}")["message"]["items"]
 
 
-def author_names(item):
-    out = []
-    for a in item.get("author", []):
-        out.append(" ".join(x for x in [a.get("given", ""), a.get("family", "")] if x).strip())
-    return out
+def openalex_doi(doi):
+    encoded = urllib.parse.quote(f"https://doi.org/{doi}", safe="")
+    return get_json(f"https://api.openalex.org/works/{encoded}")
 
 
-def title(item):
+def normalize(value):
+    value = unicodedata.normalize("NFKD", str(value or ""))
+    value = "".join(ch for ch in value if not unicodedata.combining(ch)).lower()
+    return " ".join(re.findall(r"[a-z0-9]+", value))
+
+
+def normalized_doi(value):
+    value = (value or "").strip().lower()
+    for prefix in ("https://doi.org/", "http://doi.org/", "doi:"):
+        if value.startswith(prefix):
+            value = value[len(prefix):]
+    return value.strip()
+
+
+def similarity(a, b):
+    return round(difflib.SequenceMatcher(None, normalize(a), normalize(b)).ratio(), 4)
+
+
+def crossref_author_names(item):
+    return [" ".join(x for x in (a.get("given", ""), a.get("family", "")) if x).strip() for a in item.get("author", [])]
+
+
+def openalex_author_names(item):
+    return [a.get("author", {}).get("display_name", "").strip() for a in item.get("authorships", []) if a.get("author")]
+
+
+def crossref_title(item):
     values = item.get("title") or []
     return values[0].strip() if values else None
 
 
-def year(item):
+def crossref_year(item):
     for field in ("published-print", "published-online", "published", "issued"):
         parts = item.get(field, {}).get("date-parts", [])
         if parts and parts[0]:
@@ -63,72 +93,152 @@ def year(item):
     return None
 
 
-def normalized_doi(value):
-    return (value or "").lower().strip().removeprefix("https://doi.org/")
+def person_matches(person, authors):
+    target = normalize(person)
+    target_parts = target.split()
+    family = target_parts[-1] if target_parts else ""
+    for author in authors:
+        candidate = normalize(author)
+        if candidate == target:
+            return True, author, 1.0
+        score = difflib.SequenceMatcher(None, target, candidate).ratio()
+        # Allow abbreviated given names only when surname is preserved, but do not auto-verify on this alone.
+        if family and family in candidate.split() and score >= 0.72:
+            return True, author, round(score, 4)
+    return False, None, 0.0
+
+
+def evaluate_source(person, local, source_name, source_title, source_year, source_authors, source_doi=None):
+    title_score = similarity(local.get("title"), source_title)
+    author_ok, matched_author, author_score = person_matches(person, source_authors)
+    local_year = local.get("year")
+    year_ok = bool(local_year and source_year and int(local_year) == int(source_year))
+    doi_ok = True if not local.get("doi") else normalized_doi(local.get("doi")) == normalized_doi(source_doi or local.get("doi"))
+    return {
+        "source": source_name,
+        "doi_match": doi_ok,
+        "title_match": title_score >= TITLE_THRESHOLD,
+        "title_similarity": title_score,
+        "author_match": author_ok,
+        "matched_author": matched_author,
+        "author_similarity": author_score,
+        "year_match": year_ok,
+        "source_title": source_title,
+        "source_year": source_year,
+        "source_authors": source_authors,
+    }
+
+
+def decision(evidence):
+    if not evidence:
+        return "needs_review", "No machine-verifiable bibliographic source resolved."
+    primary = evidence[0]
+    core = primary["doi_match"] and primary["title_match"] and primary["author_match"] and primary["year_match"]
+    if core:
+        return "verified", "DOI, title, author identity, and year match the primary bibliographic source."
+    failed = [label for key, label in (("doi_match", "DOI"), ("title_match", "title"), ("author_match", "author"), ("year_match", "year")) if not primary[key]]
+    return "needs_review", f"Primary-source comparison requires review: {', '.join(failed)} did not match confidently."
+
+
+def verify_publication(person, publication):
+    doi = normalized_doi(publication.get("doi"))
+    result = {
+        "id": publication.get("id"),
+        "title": publication.get("title"),
+        "doi": doi or None,
+        "current_status": publication.get("verification", "unverified"),
+        "evidence": [],
+    }
+    if not doi:
+        result["recommended_status"] = "manual_verified" if "publisher" in publication.get("verification_sources", []) else "needs_review"
+        result["reason"] = "No DOI is recorded; retain only with direct publisher/manual evidence."
+        return result
+
+    try:
+        meta = crossref_doi(doi)
+        result["evidence"].append(evaluate_source(
+            person, publication, "crossref", crossref_title(meta), crossref_year(meta),
+            crossref_author_names(meta), meta.get("DOI")
+        ))
+    except Exception as exc:
+        result["crossref_error"] = str(exc)[:240]
+
+    try:
+        meta = openalex_doi(doi)
+        result["evidence"].append(evaluate_source(
+            person, publication, "openalex", meta.get("title"), meta.get("publication_year"),
+            openalex_author_names(meta), (meta.get("ids") or {}).get("doi")
+        ))
+    except Exception as exc:
+        result["openalex_error"] = str(exc)[:240]
+
+    status, reason = decision(result["evidence"])
+    result["recommended_status"] = status
+    result["reason"] = reason
+    result["status_changed"] = result["current_status"] != status
+    return result
 
 
 def main():
     pubs = load(PUBS)
     identity = load(IDENTITY)
     person = identity["person"]["name"]
-    existing = {normalized_doi(p.get("doi")) for p in pubs.get("publications", []) if p.get("doi")}
+    records = pubs.get("publications", [])
+    existing = {normalized_doi(p.get("doi")) for p in records if p.get("doi")}
 
-    # Validate/enrich only records already explicitly verified by the portfolio owner.
-    validation = []
-    for p in pubs.get("publications", []):
-        doi = normalized_doi(p.get("doi"))
-        if not doi or p.get("verification") != "verified":
-            continue
-        try:
-            meta = crossref_doi(doi)
-            validation.append({
-                "doi": doi,
-                "status": "resolved",
-                "crossref_title": title(meta),
-                "crossref_year": year(meta),
-                "crossref_authors": author_names(meta),
-                "publisher": meta.get("publisher"),
-                "type": meta.get("type"),
-            })
-        except Exception as exc:
-            validation.append({"doi": doi, "status": "lookup_failed", "error": str(exc)[:240]})
+    verification = [verify_publication(person, publication) for publication in records]
 
-    # Discover by name, but never treat a name match as proof of authorship.
     candidates = []
     try:
         for item in crossref_author(person):
             doi = normalized_doi(item.get("DOI"))
             if not doi or doi in existing:
                 continue
+            authors = crossref_author_names(item)
+            author_ok, matched_author, author_score = person_matches(person, authors)
             candidates.append({
                 "doi": doi,
-                "title": title(item),
-                "year": year(item),
+                "title": crossref_title(item),
+                "year": crossref_year(item),
                 "venue": (item.get("container-title") or [None])[0],
-                "authors": author_names(item),
+                "authors": authors,
                 "publisher": item.get("publisher"),
                 "source": "crossref-name-discovery",
                 "verification": "needs_review",
-                "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+                "identity_name_match": author_ok,
+                "matched_author": matched_author,
+                "author_similarity": author_score,
+                "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
             })
     except Exception as exc:
         candidates.append({"source": "crossref-name-discovery", "verification": "lookup_failed", "error": str(exc)[:240]})
 
     report = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "person": person,
         "policy": {
             "auto_publish": False,
+            "auto_delete": False,
+            "auto_mutate_public_records": False,
             "name_match_is_proof": False,
-            "verified_publications_mutated": False,
-            "review_required": True
+            "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
+            "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
+            "title_similarity_threshold": TITLE_THRESHOLD,
+            "review_required_for_mismatch": True
         },
-        "verified_doi_validation": validation,
+        "verification_summary": {
+            "total_public_records": len(records),
+            "machine_verified": sum(v.get("recommended_status") == "verified" for v in verification),
+            "manual_verified": sum(v.get("recommended_status") == "manual_verified" for v in verification),
+            "needs_review": sum(v.get("recommended_status") == "needs_review" for v in verification),
+        },
+        "publication_verification": verification,
         "discovered_candidates": candidates
     }
     REVIEW.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Validated {len(validation)} verified DOI(s); discovered {len(candidates)} review candidate(s).")
+    summary = report["verification_summary"]
+    print(f"Checked {summary['total_public_records']} public record(s): {summary['machine_verified']} machine verified, {summary['manual_verified']} manual-source verified, {summary['needs_review']} need review; discovered {len(candidates)} candidate(s).")
 
 
 if __name__ == "__main__":
