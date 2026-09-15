@@ -6,6 +6,14 @@ on:
       - 'scripts/**'
       - 'tests/**'
       - 'data/academic-identity.json'
+      - 'data/academic-decisions.json'
+      - 'data/publications.json'
+      - 'data/academic-review.json'
+      - 'data/academic.json'
+      - 'review.html'
+      - 'review.js'
+      - 'review.css'
+      - '.github/workflows/academic-review-decision.yml'
       - '.github/workflows/academic-safety-tests.yml'
   push:
     branches: [main]
@@ -13,6 +21,14 @@ on:
       - 'scripts/**'
       - 'tests/**'
       - 'data/academic-identity.json'
+      - 'data/academic-decisions.json'
+      - 'data/publications.json'
+      - 'data/academic-review.json'
+      - 'data/academic.json'
+      - 'review.html'
+      - 'review.js'
+      - 'review.css'
+      - '.github/workflows/academic-review-decision.yml'
       - '.github/workflows/academic-safety-tests.yml'
   workflow_dispatch:
 
