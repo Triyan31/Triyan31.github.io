@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Academic Review Queue — Triyan Agung Laksono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./review.css" />
+</head>
+<body class="review-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div id="spotlight" class="spotlight"></div>
+  <header class="nav-wrap"><nav class="nav shell" aria-label="Review navigation">
+    <a class="brand" href="./"><span class="brand-mark">TL</span><span>Academic Review</span></a>
+    <div class="review-nav-note">READ-ONLY REVIEW CONSOLE</div>
+    <a class="btn ghost" href="./#research">← Portfolio</a>
+  </nav></header>
+  <main class="review-shell shell">
+    <section class="review-hero">
+      <div><div class="eyebrow"><span class="pulse"></span> Academic integrity gate</div><h1>Review before <span>you claim.</span></h1><p class="lead">Candidates discovered from bibliographic name searches are not proof of authorship. Inspect the source and identity evidence before recording an approval or rejection.</p></div>
+      <div class="review-policy"><span>POLICY</span><strong>Discovery ≠ authorship</strong><p>This page never writes to GitHub and never publishes a candidate automatically. Decisions remain authenticated repository actions.</p></div>
+    </section>
+    <section class="review-dashboard">
+      <div id="reviewStats" class="review-stats"></div>
+      <div class="review-toolbar"><div><span class="section-kicker">ACADEMIC INBOX</span><h2>Candidate review queue</h2></div><div class="review-controls"><input id="reviewSearch" type="search" placeholder="Search title, author, DOI…" aria-label="Search candidates"><select id="reviewFilter" aria-label="Filter candidates"><option value="all">All candidates</option><option value="strong">Stronger name match</option><option value="weak">Weak / no name match</option></select></div></div>
+      <div id="reviewNotice" class="review-notice">Loading the latest verification report…</div>
+      <div id="reviewQueue" class="review-queue"></div>
+    </section>
+    <section class="review-how"><div><span class="section-kicker">SAFE DECISION FLOW</span><h2>How to decide</h2></div><div class="review-steps"><article><b>01</b><strong>Open DOI/source</strong><p>Confirm the real article, not merely a matching name.</p></article><article><b>02</b><strong>Check identity</strong><p>Compare full author name, coauthors, affiliation, topic, and author profile evidence.</p></article><article><b>03</b><strong>Record decision</strong><p>Approve only with evidence. Reject false positives so future syncs can suppress them.</p></article></div></section>
+  </main>
+  <footer class="footer shell"><div><div class="brand footer-brand"><span class="brand-mark">TL</span><span>Triyan Agung Laksono</span></div><p>Academic verification console · public read-only view</p></div><div class="footer-links"><a href="https://github.com/Triyan31/Triyan31.github.io" target="_blank" rel="noreferrer">Repository ↗</a><a href="./#research">Research ↑</a></div></footer>
+  <script src="./review.js"></script>
+</body></html>
