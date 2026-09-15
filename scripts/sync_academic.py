@@ -8,6 +8,7 @@ Safety policy:
 - Ambiguous/mismatched records go to data/academic-review.json.
 - Name-only discoveries are always needs_review and never auto-published.
 - DOI-less publisher records remain manual-review records.
+- Explicit review decisions are persisted so rejected candidates do not reappear.
 """
 from __future__ import annotations
 
@@ -25,11 +26,14 @@ DATA = ROOT / "data"
 PUBS = DATA / "publications.json"
 IDENTITY = DATA / "academic-identity.json"
 REVIEW = DATA / "academic-review.json"
-USER_AGENT = "Triyan31-academic-sync/2.0 (GitHub Pages academic portfolio)"
+DECISIONS = DATA / "academic-decisions.json"
+USER_AGENT = "Triyan31-academic-sync/2.1 (GitHub Pages academic portfolio)"
 TITLE_THRESHOLD = 0.88
 
 
-def load(path):
+def load(path, default=None):
+    if not path.exists():
+        return default
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -102,7 +106,6 @@ def person_matches(person, authors):
         if candidate == target:
             return True, author, 1.0
         score = difflib.SequenceMatcher(None, target, candidate).ratio()
-        # Allow abbreviated given names only when surname is preserved, but do not auto-verify on this alone.
         if family and family in candidate.split() and score >= 0.72:
             return True, author, round(score, 4)
     return False, None, 0.0
@@ -142,36 +145,21 @@ def decision(evidence):
 
 def verify_publication(person, publication):
     doi = normalized_doi(publication.get("doi"))
-    result = {
-        "id": publication.get("id"),
-        "title": publication.get("title"),
-        "doi": doi or None,
-        "current_status": publication.get("verification", "unverified"),
-        "evidence": [],
-    }
+    result = {"id": publication.get("id"), "title": publication.get("title"), "doi": doi or None, "current_status": publication.get("verification", "unverified"), "evidence": []}
     if not doi:
         result["recommended_status"] = "manual_verified" if "publisher" in publication.get("verification_sources", []) else "needs_review"
         result["reason"] = "No DOI is recorded; retain only with direct publisher/manual evidence."
         return result
-
     try:
         meta = crossref_doi(doi)
-        result["evidence"].append(evaluate_source(
-            person, publication, "crossref", crossref_title(meta), crossref_year(meta),
-            crossref_author_names(meta), meta.get("DOI")
-        ))
+        result["evidence"].append(evaluate_source(person, publication, "crossref", crossref_title(meta), crossref_year(meta), crossref_author_names(meta), meta.get("DOI")))
     except Exception as exc:
         result["crossref_error"] = str(exc)[:240]
-
     try:
         meta = openalex_doi(doi)
-        result["evidence"].append(evaluate_source(
-            person, publication, "openalex", meta.get("title"), meta.get("publication_year"),
-            openalex_author_names(meta), (meta.get("ids") or {}).get("doi")
-        ))
+        result["evidence"].append(evaluate_source(person, publication, "openalex", meta.get("title"), meta.get("publication_year"), openalex_author_names(meta), (meta.get("ids") or {}).get("doi")))
     except Exception as exc:
         result["openalex_error"] = str(exc)[:240]
-
     status, reason = decision(result["evidence"])
     result["recommended_status"] = status
     result["reason"] = reason
@@ -182,21 +170,27 @@ def verify_publication(person, publication):
 def main():
     pubs = load(PUBS)
     identity = load(IDENTITY)
+    decisions_doc = load(DECISIONS, {"decisions": []})
+    decisions = {normalized_doi(d.get("doi")): d for d in decisions_doc.get("decisions", []) if d.get("doi")}
     person = identity["person"]["name"]
     records = pubs.get("publications", [])
     existing = {normalized_doi(p.get("doi")) for p in records if p.get("doi")}
-
     verification = [verify_publication(person, publication) for publication in records]
 
     candidates = []
+    suppressed = []
     try:
         for item in crossref_author(person):
             doi = normalized_doi(item.get("DOI"))
             if not doi or doi in existing:
                 continue
+            prior = decisions.get(doi)
+            if prior and prior.get("decision") == "reject":
+                suppressed.append({"doi": doi, "title": crossref_title(item), "decision": "reject", "decided_at": prior.get("decided_at")})
+                continue
             authors = crossref_author_names(item)
             author_ok, matched_author, author_score = person_matches(person, authors)
-            candidates.append({
+            candidate = {
                 "doi": doi,
                 "title": crossref_title(item),
                 "year": crossref_year(item),
@@ -209,12 +203,15 @@ def main():
                 "matched_author": matched_author,
                 "author_similarity": author_score,
                 "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-            })
+            }
+            if prior:
+                candidate["prior_decision"] = prior
+            candidates.append(candidate)
     except Exception as exc:
         candidates.append({"source": "crossref-name-discovery", "verification": "lookup_failed", "error": str(exc)[:240]})
 
     report = {
-        "schema_version": 2,
+        "schema_version": 3,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "person": person,
         "policy": {
@@ -225,20 +222,24 @@ def main():
             "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
             "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
             "title_similarity_threshold": TITLE_THRESHOLD,
-            "review_required_for_mismatch": True
+            "review_required_for_mismatch": True,
+            "rejected_candidates_suppressed": True
         },
         "verification_summary": {
             "total_public_records": len(records),
             "machine_verified": sum(v.get("recommended_status") == "verified" for v in verification),
             "manual_verified": sum(v.get("recommended_status") == "manual_verified" for v in verification),
             "needs_review": sum(v.get("recommended_status") == "needs_review" for v in verification),
+            "discovered_needs_review": len(candidates),
+            "suppressed_rejections": len(suppressed)
         },
         "publication_verification": verification,
-        "discovered_candidates": candidates
+        "discovered_candidates": candidates,
+        "suppressed_candidates": suppressed
     }
     REVIEW.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     summary = report["verification_summary"]
-    print(f"Checked {summary['total_public_records']} public record(s): {summary['machine_verified']} machine verified, {summary['manual_verified']} manual-source verified, {summary['needs_review']} need review; discovered {len(candidates)} candidate(s).")
+    print(f"Checked {summary['total_public_records']} public record(s): {summary['machine_verified']} machine verified, {summary['manual_verified']} manual-source verified, {summary['needs_review']} need review; discovered {len(candidates)} candidate(s), suppressed {len(suppressed)} rejected candidate(s).")
 
 
 if __name__ == "__main__":
