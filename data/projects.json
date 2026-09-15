@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-15",
+  "updated_at": "2026-09-15T06:09:28+00:00",
   "projects": [
     {
       "id": "campus-iam",
@@ -11,7 +11,12 @@
       "symbol": "ID",
       "title": "Higher-Education Identity & Access Platform",
       "description": "Centralized SSO/IAM for higher-education applications with delegated administration, authorization controls, and auditability.",
-      "tags": ["Django", "Vue", "Keycloak", "OIDC"],
+      "tags": [
+        "Django",
+        "Vue",
+        "Keycloak",
+        "OIDC"
+      ],
       "featured": true
     },
     {
@@ -23,7 +28,11 @@
       "symbol": "EX",
       "title": "EximCheck",
       "description": "Export/import document validation and workflow product under active development toward commercial collaboration.",
-      "tags": ["Document Validation", "Workflow", "Product"]
+      "tags": [
+        "Document Validation",
+        "Workflow",
+        "Product"
+      ]
     },
     {
       "id": "lumina-ojs-theme",
@@ -37,7 +46,19 @@
       "description": "Theme-development work for Open Journal Systems and academic publishing environments.",
       "url": "https://github.com/Triyan31/lumina-ojs-theme",
       "repo": "Triyan31/lumina-ojs-theme",
-      "tags": ["OJS", "PHP", "UI"]
+      "tags": [
+        "OJS",
+        "PHP",
+        "UI"
+      ],
+      "github": {
+        "stars": 0,
+        "forks": 0,
+        "language": null,
+        "topics": [],
+        "updated_at": "2026-09-06T16:55:22Z"
+      },
+      "available": true
     },
     {
       "id": "shuttle-imbalance-bench",
@@ -51,7 +72,19 @@
       "description": "Research implementation for multiclass imbalanced-data classification.",
       "url": "https://github.com/Triyan31/shuttle-imbalance-bench",
       "repo": "Triyan31/shuttle-imbalance-bench",
-      "tags": ["Python", "SMOTE", "Random Forest"]
+      "tags": [
+        "Python",
+        "SMOTE",
+        "Random Forest"
+      ],
+      "github": {
+        "stars": 0,
+        "forks": 0,
+        "language": "Python",
+        "topics": [],
+        "updated_at": "2026-09-06T16:43:43Z"
+      },
+      "available": true
     }
   ]
 }
