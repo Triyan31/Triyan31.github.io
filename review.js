@@ -1,5 +1,6 @@
 const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 let candidates = [];
+let pendingDecision = null;
 const queue = document.getElementById('reviewQueue');
 const notice = document.getElementById('reviewNotice');
 const stats = document.getElementById('reviewStats');
@@ -56,9 +57,36 @@ function render(){
   queue.innerHTML = visible.length ? visible.map(card).join('') : `<div class="review-empty">No candidates match this view.</div>`;
   notice.textContent = `${visible.length} of ${candidates.length} candidates shown. A name match is only a discovery signal, never proof of authorship.`;
 }
-async function copyDecision(doi, action){
+function candidateByDoi(doi){ return candidates.find(c => c.doi === doi) || {}; }
+function closeDecisionDialog(){
+  document.querySelector('.decision-confirm-overlay')?.remove();
+  pendingDecision = null;
+}
+function openDecisionDialog(doi, action){
+  const candidate = candidateByDoi(doi);
+  pendingDecision = {doi, action};
+  const approving = action === 'approve';
+  const label = approving ? 'Confirm as my article' : 'Mark as not mine';
+  const explanation = approving
+    ? 'This does not publish the article immediately. The authenticated workflow will still require identity and bibliographic checks to pass.'
+    : 'This will submit an authenticated decision that this candidate is not your article.';
+  document.body.insertAdjacentHTML('beforeend', `<div class="decision-confirm-overlay" role="presentation">
+    <section class="decision-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="decisionDialogTitle">
+      <span class="decision-dialog-kicker">ACADEMIC REVIEW · CONFIRM DECISION</span>
+      <h2 id="decisionDialogTitle">${escapeHtml(label)}</h2>
+      <div class="decision-dialog-record"><span>Article</span><strong>${escapeHtml(candidate.title || 'Untitled candidate')}</strong><span>DOI</span><code>${escapeHtml(doi)}</code></div>
+      <p>${escapeHtml(explanation)}</p>
+      <div class="decision-dialog-security"><strong>Authenticated step required</strong><span>GitHub Actions remains the trusted execution layer. No GitHub credential or token is exposed to this page.</span></div>
+      <div class="decision-dialog-actions"><button class="btn ghost" type="button" data-dialog-cancel>Cancel</button><button class="btn ${approving ? 'decision approve' : 'decision reject'}" type="button" data-dialog-continue>${approving ? 'Continue: confirm mine' : 'Continue: not mine'} →</button></div>
+    </section></div>`);
+  document.querySelector('[data-dialog-continue]')?.focus();
+}
+async function continueDecision(){
+  if(!pendingDecision) return;
+  const {doi, action} = pendingDecision;
   const text = `action=${action}\ndoi=${doi}`;
   try { await navigator.clipboard.writeText(text); } catch (_) {}
+  closeDecisionDialog();
   window.open(workflowUrl, '_blank', 'noopener,noreferrer');
 }
 queue.addEventListener('click', (event) => {
@@ -71,8 +99,13 @@ queue.addEventListener('click', (event) => {
     button.disabled = true;
     return;
   }
-  copyDecision(doi, action);
+  openDecisionDialog(doi, action);
 });
+document.addEventListener('click', (event) => {
+  if(event.target.closest('[data-dialog-cancel]') || (event.target.classList.contains('decision-confirm-overlay'))) closeDecisionDialog();
+  if(event.target.closest('[data-dialog-continue]')) continueDecision();
+});
+document.addEventListener('keydown', (event) => { if(event.key === 'Escape' && pendingDecision) closeDecisionDialog(); });
 async function init(){
   try{
     const response = await fetch('./data/academic-review.json', {cache:'no-cache'});
