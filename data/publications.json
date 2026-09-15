@@ -1,36 +1,66 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated_at": "2026-09-15",
-  "identity": {
-    "google_scholar": "Xi-AIG4AAAAJ",
-    "sinta": "6989433",
-    "ieee_author": "759850393601369"
+  "identity_registry": "data/academic-identity.json",
+  "publication_policy": {
+    "public_display_status": "verified",
+    "auto_publish_discovered_records": false,
+    "note": "Discovery and display are separated. A discovered work must be verified before it is rendered publicly."
   },
   "publications": [
     {
       "id": "digital-activity-location-clustering",
       "year": 2025,
-      "title": "Digital Activity Location Clustering Based on Twitter Geospatial Data",
-      "venue": "Journal of Information Systems Research",
-      "keywords": ["Spatiotemporal Business Intelligence", "DBSCAN", "K-Means"],
+      "title": "Digital Activity Location Clustering Based on Twitter Geospatial Data for Spatiotemporal Business Intelligence",
+      "venue": "Journal of Intelligent Software Systems",
+      "authors": ["Triyan Agung Laksono", "Widyastuti Andriyani", "Fadhlih Girindra Putra", "Ivonia Fatima Ruas da Silva", "Wiwi Widayani"],
+      "keywords": ["Clustering", "Geospatial Data", "Twitter", "Business Intelligence", "Spatiotemporal Analysis"],
       "doi": "10.26798/jiss.v4i1.2005",
-      "verification": "verified"
+      "url": "https://doi.org/10.26798/jiss.v4i1.2005",
+      "verification": "verified",
+      "verification_sources": ["publisher", "doi", "garuda"]
     },
     {
       "id": "stroke-prediction-imbalanced-data",
       "year": 2025,
-      "title": "Imbalanced Data Handling for Stroke Prediction",
-      "venue": "IEEE ISRITI",
+      "title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
+      "venue": "ISRITI 2025 — IEEE",
       "keywords": ["Machine Learning", "Imbalanced Classification"],
-      "verification": "verified"
+      "doi": "10.1109/ISRITI68345.2025.11393348",
+      "url": "https://doi.org/10.1109/ISRITI68345.2025.11393348",
+      "verification": "verified",
+      "verification_sources": ["ieee_author", "doi"]
     },
     {
       "id": "statlog-shuttle-multiclass",
       "year": 2025,
-      "title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle)",
-      "venue": "IEEE ISRITI",
+      "title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
+      "venue": "ISRITI 2025 — IEEE",
       "keywords": ["Gradient Boosting", "SMOTE", "Random Forest"],
-      "verification": "verified"
+      "doi": "10.1109/ISRITI68345.2025.11393262",
+      "url": "https://doi.org/10.1109/ISRITI68345.2025.11393262",
+      "verification": "verified",
+      "verification_sources": ["ieee_author", "doi"]
+    },
+    {
+      "id": "airflow-vs-spark-academic-outcomes",
+      "year": 2025,
+      "title": "Perbandingan Apache Airflow dan Apache Spark dalam Proses ETL untuk Memprediksi DropOut dan Keberhasilan Akademik Mahasiswa",
+      "venue": "Jurnal Informatika dan Rekayasa Perangkat Lunak, Vol. 7 No. 2",
+      "authors": ["Triyan Agung Laksono", "Widyastuti Andriyani"],
+      "keywords": ["Apache Airflow", "Apache Spark", "ETL", "Academic Analytics"],
+      "verification": "verified",
+      "verification_sources": ["publisher"]
+    },
+    {
+      "id": "hyperparameter-tuning-socioeconomic-academic-analysis",
+      "year": 2024,
+      "title": "Hyperparameter Tuning Modeling for Socioeconomic based Academic Analysis",
+      "venue": "Journal of Information Systems Research and Practice",
+      "authors": ["Triyan Agung Laksono", "Sri Redjeki", "Tutut Herawan"],
+      "keywords": ["Machine Learning", "Hyperparameter Tuning", "Academic Analytics"],
+      "verification": "verified",
+      "verification_sources": ["publisher"]
     }
   ]
 }
