@@ -1,0 +1,75 @@
+name: Academic review decision
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Decision"
+        required: true
+        type: choice
+        options:
+          - reject
+          - approve
+      doi:
+        description: "Candidate DOI (copy from review console)"
+        required: true
+        type: string
+      evidence_url:
+        description: "Publisher / DOI / author-profile evidence URL (required for approve)"
+        required: false
+        type: string
+      note:
+        description: "Optional review note"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: academic-review-decision
+  cancel-in-progress: false
+
+jobs:
+  decide:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Apply fail-closed decision
+        env:
+          DECISION_ACTION: ${{ inputs.action }}
+          DECISION_DOI: ${{ inputs.doi }}
+          EVIDENCE_URL: ${{ inputs.evidence_url }}
+          REVIEW_NOTE: ${{ inputs.note }}
+        run: |
+          args=("$DECISION_ACTION" --doi "$DECISION_DOI")
+          if [ -n "$EVIDENCE_URL" ]; then args+=(--evidence-url "$EVIDENCE_URL"); fi
+          if [ -n "$REVIEW_NOTE" ]; then args+=(--note "$REVIEW_NOTE"); fi
+          python scripts/review_academic.py "${args[@]}"
+
+      - name: Refresh academic verification report
+        run: python scripts/sync_academic.py
+
+      - name: Run academic safety tests
+        run: python -m unittest discover -s tests -p 'test_academic*.py' -v
+
+      - name: Commit reviewed academic data
+        run: |
+          if git diff --quiet -- data/academic-decisions.json data/publications.json data/academic-review.json data/academic.json; then
+            echo "No academic data changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/academic-decisions.json data/publications.json data/academic-review.json data/academic.json
+          git commit -m "Record academic review decision for ${{ inputs.doi }}"
+          git push origin HEAD:main
