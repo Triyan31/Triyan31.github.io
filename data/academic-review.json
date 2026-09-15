@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-15T06:31:30.665775+00:00",
+  "person": "Triyan Agung Laksono",
+  "policy": {
+    "auto_publish": false,
+    "name_match_is_proof": false,
+    "verified_publications_mutated": false,
+    "review_required": true
+  },
+  "verified_doi_validation": [
+    {
+      "doi": "10.26798/jiss.v4i1.2005",
+      "status": "resolved",
+      "crossref_title": "DIGITAL ACTIVITY LOCATION CLUSTERING BASED ON TWITTER GEOSPATIAL DATA FOR SPATIOTEMPORAL BUSINESS INTELLIGENCE",
+      "crossref_year": 2025,
+      "crossref_authors": [
+        "Triyan Agung Laksono",
+        "Widyastuti Andriyani",
+        "Fadhlih Girindra Putra",
+        "Ivonia Fatima Ruas da silva",
+        "Wiwi Widayani"
+      ],
+      "publisher": "Indonesian Digital Technology University",
+      "type": "journal-article"
+    },
+    {
+      "doi": "10.1109/isriti68345.2025.11393348",
+      "status": "resolved",
+      "crossref_title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
+      "crossref_year": 2025,
+      "crossref_authors": [
+        "Triyan Agung Laksono",
+        "Widyastuti Andriyani"
+      ],
+      "publisher": "IEEE",
+      "type": "proceedings-article"
+    },
+    {
+      "doi": "10.1109/isriti68345.2025.11393262",
+      "status": "resolved",
+      "crossref_title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
+      "crossref_year": 2025,
+      "crossref_authors": [
+        "Triyan Agung Laksono",
+        "Bambang Purnomosidi Dwi Putranto",
+        "Dini Fakta Sari",
+        "Deborah Kurniawati",
+        "Ali Impron",
+        "Adi Kusjani"
+      ],
+      "publisher": "IEEE",
+      "type": "proceedings-article"
+    }
+  ],
+  "discovered_candidates": [
+    {
+      "doi": "10.33795/jip.v9i1.1155",
+      "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
+      "year": 2022,
+      "venue": "Jurnal Informatika Polinema",
+      "authors": [
+        "Agung Laksono"
+      ],
+      "publisher": "Politeknik Negeri Malang",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.64628/aan.vjxq6jv6a",
+      "title": "Riset: suami di perkotaan lebih banyak terlibat dalam pemeriksaan kehamilan istri dibanding suami di pedesaan",
+      "year": 2022,
+      "venue": null,
+      "authors": [
+        "Agung Laksono"
+      ],
+      "publisher": "The Conversation",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.31227/osf.io/rvzhc",
+      "title": "Mendekatkan Pelayanan Kesehatan  yang Berkualitas pada Masyarakat",
+      "year": 2019,
+      "venue": null,
+      "authors": [
+        "Agung Dwi Laksono"
+      ],
+      "publisher": "Center for Open Science",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.31227/osf.io/sargw",
+      "title": "Mengarusutamakan Kebudayaan  di Bidang Kesehatan",
+      "year": 2019,
+      "venue": null,
+      "authors": [
+        "Agung Dwi Laksono"
+      ],
+      "publisher": "Center for Open Science",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.34306/att.v5i2.294",
+      "title": "The Impact Learning Organization and Organization Culture To Employee Performance, Mediated By Knowledge Sharing (Empirical Study On Bumitama Agri LTD.)",
+      "year": 2023,
+      "venue": "Aptisi Transactions on Technopreneurship (ATT)",
+      "authors": [
+        "Ade Agung Laksono"
+      ],
+      "publisher": "Pandawan",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.63068/revenue.v2i2.62",
+      "title": "Kualitas Pelayanan dan Fasilitas Kendaraan Rental Terhadap Kepuasan Pelanggan di Kota Pasuruan",
+      "year": 2024,
+      "venue": "Revenue Manuscript",
+      "authors": [
+        "Tri Agung Hari Laksono"
+      ],
+      "publisher": "Asosiasi Riset dan Pengembangan Manusia Berkelanjutan (ORBIT)",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.37641/jiakes.v10i2.1329",
+      "title": "Pengaruh Sosialisasisi Perpajakan dan Sanksi Pajak terhadap Kepatuhan Wajib Pajak Orang Pribadi di KPP Pratama Metro",
+      "year": 2022,
+      "venue": "Jurnal Ilmiah Akuntansi Kesatuan",
+      "authors": [
+        "Agung Laksono",
+        "Syamsu Rizal"
+      ],
+      "publisher": "Institut Bisnis dan Informatika Kesatuan",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.1063/1.5016026",
+      "title": "Validation method for determination of cholesterol in human urine with electrochemical sensors using gold electrodes",
+      "year": 2017,
+      "venue": "AIP Conference Proceedings",
+      "authors": [
+        "Riyanto",
+        "Tomy Agung Laksono"
+      ],
+      "publisher": "Author(s)",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.36546/jm.v9i4.499",
+      "title": "PENGARUH  PERSEPSI  HARGA DAN CITRA MEREK TERHADAP KEPUASAN PELANGGAN PENGGUNA  JASA TRANSPORTASI  OJEK ONLINE (STUDI KASUS PELANGGAN GRAB DI KOTA PALEMBANG)",
+      "year": 2022,
+      "venue": "Jurnal Manajemen",
+      "authors": [
+        "Abdullah Rasjid",
+        "Agung Laksono"
+      ],
+      "publisher": "Universitas Palembang",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.24815/jpsi.v10i3.24100",
+      "title": "Development of Science Digital Scrapbook as Authentic Assessment to Measure Learning Outcome of Junior High School Students",
+      "year": 2022,
+      "venue": "Jurnal Pendidikan Sains Indonesia",
+      "authors": [
+        "Agung Laksono",
+        "Arif Widiyatmoko*"
+      ],
+      "publisher": "LPPM Universitas Syiah Kuala",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.33258/biolae.v5i2.986",
+      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
+      "year": 2023,
+      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+      "authors": [
+        "Agung Tri Laksono",
+        "Else Liliani"
+      ],
+      "publisher": "Budapest International Research and Critics Institute",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.35316/icorhestech.v1i1.5697",
+      "title": "Development of an Information System for Reporting Road Damage in Bandar Lampung City",
+      "year": 2024,
+      "venue": "Proceeding of International Conference of Religion, Health, Education, Science and Technology",
+      "authors": [
+        "Pria Agung Laksono",
+        "Heni Sulistiani"
+      ],
+      "publisher": "LP2M Universitas Ibrahimy",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.1016/j.cegh.2025.102201",
+      "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
+      "year": 2025,
+      "venue": "Clinical Epidemiology and Global Health",
+      "authors": [
+        "Paisal Paisal",
+        "Agung Dwi Laksono"
+      ],
+      "publisher": "Elsevier BV",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.31227/osf.io/qh94p",
+      "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
+      "year": 2019,
+      "venue": null,
+      "authors": [
+        "Agung Dwi Laksono",
+        "Hario Megatsari"
+      ],
+      "publisher": "Center for Open Science",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.46369/logistik.v12i2.2814",
+      "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
+      "year": 2022,
+      "venue": "Jurnal Logistik Bisnis",
+      "authors": [
+        "Darfial Guslan",
+        "Didi Agung Laksono"
+      ],
+      "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.59324/ejaset.2024.2(2).03",
+      "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
+      "year": 2024,
+      "venue": "European Journal of Applied Science, Engineering and Technology",
+      "authors": [
+        "Dwiaji Agung Laksono",
+        "Ganis Lukmandaru"
+      ],
+      "publisher": "AMO Publisher",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    },
+    {
+      "doi": "10.24076/joism.2020v1i2.443",
+      "title": "METODE MYER BRIGGS TYPE INDICATOR (MBTI) UNTUK TES KEPRIBADIAN SEBAGAI MEDIA PENGEMBANGAN DIRI",
+      "year": 2020,
+      "venue": "Journal of Information System Management (JOISM)",
+      "authors": [
+        "Wisnu Agung Laksono",
+        "Yuli Astuti"
+      ],
+      "publisher": "STMIK AMIKOM Yogyakarta",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "reason": "Name search is not sufficient evidence of authorship; corroborate against verified academic identifiers, affiliation, publisher page, or manual review."
+    }
+  ]
+}
