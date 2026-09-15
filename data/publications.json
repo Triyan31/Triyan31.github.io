@@ -49,6 +49,7 @@
       "venue": "Jurnal Informatika dan Rekayasa Perangkat Lunak, Vol. 7 No. 2",
       "authors": ["Triyan Agung Laksono", "Widyastuti Andriyani"],
       "keywords": ["Apache Airflow", "Apache Spark", "ETL", "Academic Analytics"],
+      "url": "https://publikasiilmiah.unwahas.ac.id/JINRPL/article/view/12938",
       "verification": "verified",
       "verification_sources": ["publisher"]
     },
@@ -59,6 +60,7 @@
       "venue": "Journal of Information Systems Research and Practice",
       "authors": ["Triyan Agung Laksono", "Sri Redjeki", "Tutut Herawan"],
       "keywords": ["Machine Learning", "Hyperparameter Tuning", "Academic Analytics"],
+      "url": "https://ajap.um.edu.my/index.php/JISRP/article/view/57829",
       "verification": "verified",
       "verification_sources": ["publisher"]
     }
