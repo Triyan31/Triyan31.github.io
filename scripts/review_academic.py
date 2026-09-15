@@ -2,8 +2,9 @@
 """Authenticated approve/reject decision engine for academic discovery candidates.
 
 Reject decisions suppress recurring false positives. Approvals require explicit
-source evidence and must also pass the same DOI/title/author/year machine gate used
-by the academic verifier before a record can enter the public verified registry.
+source evidence, an exact registered author-name match in the candidate metadata,
+and the DOI/title/author/year machine gate before a record can enter the public
+verified registry.
 """
 from __future__ import annotations
 
@@ -11,6 +12,7 @@ import argparse
 import json
 import pathlib
 import re
+import unicodedata
 from datetime import datetime, timezone
 
 from sync_academic import verify_publication
@@ -39,6 +41,17 @@ def doi_norm(value):
         if value.startswith(prefix):
             value = value[len(prefix):]
     return value.strip()
+
+
+def normalize_name(value):
+    value = unicodedata.normalize("NFKD", str(value or ""))
+    value = "".join(ch for ch in value if not unicodedata.combining(ch)).lower()
+    return " ".join(re.findall(r"[a-z0-9]+", value))
+
+
+def candidate_has_registered_name(person, candidate):
+    target = normalize_name(person)
+    return bool(target) and any(normalize_name(author) == target for author in candidate.get("authors") or [])
 
 
 def find_candidate(report, doi):
@@ -81,6 +94,8 @@ def main():
         person = identity.get("person", {}).get("name")
         if not person:
             raise SystemExit("Academic identity name is unavailable; approval is fail-closed.")
+        if not candidate_has_registered_name(person, candidate):
+            raise SystemExit("Approval blocked: candidate metadata does not contain the exact registered academic identity name. Add a verified alias to the identity policy before allowing a name variant.")
         publication = {
             "id": slug(candidate.get("title")),
             "year": candidate.get("year"),
