@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-15",
+  "identity": {
+    "google_scholar": "Xi-AIG4AAAAJ",
+    "sinta": "6989433",
+    "ieee_author": "759850393601369"
+  },
+  "publications": [
+    {
+      "id": "digital-activity-location-clustering",
+      "year": 2025,
+      "title": "Digital Activity Location Clustering Based on Twitter Geospatial Data",
+      "venue": "Journal of Information Systems Research",
+      "keywords": ["Spatiotemporal Business Intelligence", "DBSCAN", "K-Means"],
+      "doi": "10.26798/jiss.v4i1.2005",
+      "verification": "verified"
+    },
+    {
+      "id": "stroke-prediction-imbalanced-data",
+      "year": 2025,
+      "title": "Imbalanced Data Handling for Stroke Prediction",
+      "venue": "IEEE ISRITI",
+      "keywords": ["Machine Learning", "Imbalanced Classification"],
+      "verification": "verified"
+    },
+    {
+      "id": "statlog-shuttle-multiclass",
+      "year": 2025,
+      "title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle)",
+      "venue": "IEEE ISRITI",
+      "keywords": ["Gradient Boosting", "SMOTE", "Random Forest"],
+      "verification": "verified"
+    }
+  ]
+}
