@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
-"""Safely approve or reject candidates from data/academic-review.json.
+"""Authenticated approve/reject decision engine for academic discovery candidates.
 
-This helper never guesses authorship. Approval requires an explicit candidate DOI
-and creates a public record marked `needs_review` unless the operator also supplies
-publisher/manual evidence. Rejections are persisted so recurring discovery does not
-keep presenting the same DOI.
+Reject decisions suppress recurring false positives. Approvals require explicit
+source evidence and must also pass the same DOI/title/author/year machine gate used
+by the academic verifier before a record can enter the public verified registry.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import pathlib
+import re
 from datetime import datetime, timezone
+
+from sync_academic import verify_publication
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 REVIEW = DATA / "academic-review.json"
 PUBS = DATA / "publications.json"
 DECISIONS = DATA / "academic-decisions.json"
+IDENTITY = DATA / "academic-identity.json"
 
 
 def load(path, default=None):
@@ -47,7 +50,6 @@ def find_candidate(report, doi):
 
 
 def slug(text):
-    import re
     value = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
     return value[:80] or "publication"
 
@@ -62,12 +64,43 @@ def main():
 
     report = load(REVIEW, {})
     pubs = load(PUBS, {"publications": []})
+    identity = load(IDENTITY, {})
     decisions = load(DECISIONS, {"schema_version": 1, "decisions": []})
     candidate = find_candidate(report, args.doi)
     doi = doi_norm(candidate.get("doi"))
     now = datetime.now(timezone.utc).isoformat()
 
-    # Replace the previous decision for the same DOI, preserving one canonical state.
+    if any(doi_norm(p.get("doi")) == doi for p in pubs.get("publications", [])):
+        raise SystemExit(f"DOI already exists in publications.json: {doi}")
+
+    verification_result = None
+    publication = None
+    if args.action == "approve":
+        if not args.evidence_url:
+            raise SystemExit("Approval requires --evidence-url pointing to publisher/DOI/author-profile evidence.")
+        person = identity.get("person", {}).get("name")
+        if not person:
+            raise SystemExit("Academic identity name is unavailable; approval is fail-closed.")
+        publication = {
+            "id": slug(candidate.get("title")),
+            "year": candidate.get("year"),
+            "title": candidate.get("title"),
+            "venue": candidate.get("venue"),
+            "authors": candidate.get("authors") or [],
+            "keywords": [],
+            "doi": doi,
+            "url": args.evidence_url,
+            "verification": "unverified",
+            "verification_sources": ["manual_review", candidate.get("source", "discovery")],
+        }
+        verification_result = verify_publication(person, publication)
+        if verification_result.get("recommended_status") != "verified":
+            reason = verification_result.get("reason", "Machine verification did not pass.")
+            raise SystemExit(f"Approval blocked: {reason}")
+        publication["verification"] = "verified"
+        machine_sources = [e.get("source") for e in verification_result.get("evidence", []) if e.get("source")]
+        publication["verification_sources"] = list(dict.fromkeys(publication["verification_sources"] + machine_sources))
+
     decisions["decisions"] = [d for d in decisions.get("decisions", []) if doi_norm(d.get("doi")) != doi]
     decision = {
         "doi": doi,
@@ -78,34 +111,24 @@ def main():
         "evidence_url": args.evidence_url,
         "note": args.note,
     }
+    if verification_result:
+        decision["machine_verification"] = {
+            "status": verification_result.get("recommended_status"),
+            "reason": verification_result.get("reason"),
+            "sources": [e.get("source") for e in verification_result.get("evidence", []) if e.get("source")],
+        }
     decisions["decisions"].append(decision)
     decisions["updated_at"] = now
 
-    if args.action == "approve":
-        if any(doi_norm(p.get("doi")) == doi for p in pubs.get("publications", [])):
-            raise SystemExit(f"DOI already exists in publications.json: {doi}")
-        # Approval from discovery is intentionally not equivalent to machine verification.
-        # A direct evidence URL is required before adding the record to public data.
-        if not args.evidence_url:
-            raise SystemExit("Approval requires --evidence-url pointing to publisher/DOI/author-profile evidence.")
-        publication = {
-            "id": slug(candidate.get("title")),
-            "year": candidate.get("year"),
-            "title": candidate.get("title"),
-            "venue": candidate.get("venue"),
-            "authors": candidate.get("authors") or [],
-            "keywords": [],
-            "doi": doi,
-            "url": args.evidence_url,
-            "verification": "needs_review",
-            "verification_sources": ["manual_review", candidate.get("source", "discovery")],
-        }
+    if publication:
         pubs.setdefault("publications", []).append(publication)
         pubs["updated_at"] = datetime.now(timezone.utc).date().isoformat()
         save(PUBS, pubs)
 
     save(DECISIONS, decisions)
     print(f"Recorded {args.action} decision for {doi}.")
+    if publication:
+        print("Candidate passed the verification gate and was added as verified.")
 
 
 if __name__ == "__main__":
