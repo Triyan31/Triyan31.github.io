@@ -86,11 +86,15 @@ function renderPublications(data) {
   const container = document.querySelector('#research .publication-list');
   if (!container || !Array.isArray(data.publications)) return;
   const verified = data.publications.filter((p) => p.verification === 'verified').sort((a, b) => b.year - a.year);
-  container.innerHTML = `<div class="pub-label">SELECTED VERIFIED PUBLICATIONS</div>` + verified.map((pub, index) => {
+  container.innerHTML = `<div class="pub-label">VERIFIED RESEARCH · CLICK AN ARTICLE TO OPEN SOURCE ↗</div>` + verified.map((pub, index) => {
     const details = [pub.venue, ...(pub.keywords || [])].filter(Boolean).map(escapeHtml).join(' · ');
-    const title = pub.doi ? `<a href="https://doi.org/${encodeURIComponent(pub.doi)}" target="_blank" rel="noreferrer">${escapeHtml(pub.title)} ↗</a>` : escapeHtml(pub.title);
-    return `<article><span>${escapeHtml(pub.year)}</span><div><h3>${title}</h3><p>${details}</p></div><b>${String(index + 1).padStart(2, '0')}</b></article>`;
+    const sourceUrl = pub.url || (pub.doi ? `https://doi.org/${encodeURIComponent(pub.doi)}` : '');
+    const title = sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open source article: ${escapeHtml(pub.title)}">${escapeHtml(pub.title)} ↗</a>` : escapeHtml(pub.title);
+    const sourceLabel = pub.doi ? `DOI ${escapeHtml(pub.doi)}` : 'Publisher source';
+    const source = sourceUrl ? `<a class="publication-source" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${sourceLabel} ↗</a>` : '';
+    return `<article class="reveal"><span>${escapeHtml(pub.year)}</span><div><h3>${title}</h3><p>${details}</p>${source}</div><b>${String(index + 1).padStart(2, '0')}</b></article>`;
   }).join('');
+  observeReveals(container);
 }
 
 function renderTeaching(data) {
