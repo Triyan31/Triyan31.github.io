@@ -82,18 +82,44 @@ function renderProjects(data) {
   observeReveals(container);
 }
 
+function publicationType(pub) {
+  return /IEEE|ISRITI|conference/i.test(pub.venue || '') ? 'CONFERENCE' : 'JOURNAL';
+}
+
 function renderPublications(data) {
   const container = document.querySelector('#research .publication-list');
   if (!container || !Array.isArray(data.publications)) return;
-  const verified = data.publications.filter((p) => p.verification === 'verified').sort((a, b) => b.year - a.year);
-  container.innerHTML = `<div class="pub-label">VERIFIED RESEARCH · CLICK AN ARTICLE TO OPEN SOURCE ↗</div>` + verified.map((pub, index) => {
-    const details = [pub.venue, ...(pub.keywords || [])].filter(Boolean).map(escapeHtml).join(' · ');
+  const verified = data.publications.filter((p) => p.verification === 'verified').sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+  const years = [...new Set(verified.map((p) => p.year))];
+  const journalCount = verified.filter((p) => publicationType(p) === 'JOURNAL').length;
+  const conferenceCount = verified.length - journalCount;
+  const doiCount = verified.filter((p) => p.doi).length;
+  const stats = `<div class="research-stats reveal">
+    <div><strong>${verified.length}</strong><span>Verified works</span></div>
+    <div><strong>${journalCount}</strong><span>Journal articles</span></div>
+    <div><strong>${conferenceCount}</strong><span>Conference papers</span></div>
+    <div><strong>${years.length}</strong><span>Publication years</span></div>
+  </div>`;
+  const records = verified.map((pub, index) => {
     const sourceUrl = pub.url || (pub.doi ? `https://doi.org/${encodeURIComponent(pub.doi)}` : '');
-    const title = sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open source article: ${escapeHtml(pub.title)}">${escapeHtml(pub.title)} ↗</a>` : escapeHtml(pub.title);
+    const type = publicationType(pub);
+    const authors = Array.isArray(pub.authors) && pub.authors.length ? `<p class="publication-authors">${pub.authors.map(escapeHtml).join(' · ')}</p>` : '';
+    const keywords = (pub.keywords || []).map((keyword) => `<span>${escapeHtml(keyword)}</span>`).join('');
     const sourceLabel = pub.doi ? `DOI ${escapeHtml(pub.doi)}` : 'Publisher source';
-    const source = sourceUrl ? `<a class="publication-source" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${sourceLabel} ↗</a>` : '';
-    return `<article class="reveal"><span>${escapeHtml(pub.year)}</span><div><h3>${title}</h3><p>${details}</p>${source}</div><b>${String(index + 1).padStart(2, '0')}</b></article>`;
+    const source = sourceUrl ? `<a class="publication-source" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${sourceLabel} <b>↗</b></a>` : '';
+    const title = sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open source article: ${escapeHtml(pub.title)}">${escapeHtml(pub.title)}</a>` : escapeHtml(pub.title);
+    return `<article class="publication-card reveal">
+      <div class="publication-year">${escapeHtml(pub.year)}</div>
+      <div class="publication-main">
+        <div class="publication-meta"><span class="publication-type ${type.toLowerCase()}">${type}</span><span>VERIFIED ✓</span></div>
+        <h3>${title}</h3>
+        <p class="publication-venue">${escapeHtml(pub.venue || '')}</p>${authors}
+        <div class="publication-keywords">${keywords}</div>${source}
+      </div>
+      <div class="publication-index">${String(index + 1).padStart(2, '0')}</div>
+    </article>`;
   }).join('');
+  container.innerHTML = `${stats}<div class="pub-label"><span>VERIFIED RESEARCH REGISTRY</span><span>${doiCount} DOI-LINKED · CLICK TITLE TO OPEN SOURCE ↗</span></div>${records}`;
   observeReveals(container);
 }
 
