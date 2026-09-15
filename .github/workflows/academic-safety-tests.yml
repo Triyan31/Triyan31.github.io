@@ -1,0 +1,44 @@
+name: Academic safety tests
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'data/academic-identity.json'
+      - '.github/workflows/academic-safety-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'data/academic-identity.json'
+      - '.github/workflows/academic-safety-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Compile Python
+        run: python -m compileall -q scripts tests
+
+      - name: Run academic safety tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate academic JSON
+        run: |
+          python -m json.tool data/academic-identity.json >/dev/null
+          python -m json.tool data/publications.json >/dev/null
+          python -m json.tool data/academic-decisions.json >/dev/null
