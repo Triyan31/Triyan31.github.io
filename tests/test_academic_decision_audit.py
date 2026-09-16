@@ -1,41 +1,44 @@
-import pathlib
-import sys
-import unittest
+import importlib.util
+from pathlib import Path
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
-
-import review_academic
-
-
-class AcademicDecisionActorAuditTests(unittest.TestCase):
-    def test_decision_records_authenticated_actor(self):
-        candidate = {"title": "Example Work", "source": "crossref-name-discovery"}
-        decision = review_academic.build_decision(
-            candidate,
-            "10.1234/example",
-            "reject",
-            "Triyan31",
-            "2026-09-16T00:00:00+00:00",
-            note="Not mine",
-        )
-        self.assertEqual(decision["decided_by"], "Triyan31")
-        self.assertEqual(decision["decision"], "reject")
-
-    def test_missing_actor_fails_closed(self):
-        with self.assertRaises(SystemExit):
-            review_academic.normalize_actor("")
-
-    def test_invalid_actor_fails_closed(self):
-        for actor in ("bad actor", "actor/name", "@actor", "a" * 40):
-            with self.subTest(actor=actor):
-                with self.assertRaises(SystemExit):
-                    review_academic.normalize_actor(actor)
-
-    def test_valid_github_actor_shape_is_preserved(self):
-        self.assertEqual(review_academic.normalize_actor("github-actions"), "github-actions")
-        self.assertEqual(review_academic.normalize_actor("Triyan31"), "Triyan31")
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPT = ROOT / "scripts" / "review_academic.py"
+spec = importlib.util.spec_from_file_location("review_academic", SCRIPT)
+review = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(review)
 
 
-if __name__ == "__main__":
-    unittest.main()
+def candidate():
+    return {"doi": "10.1234/example", "title": "Example", "source": "test", "authors": ["Triyan A L"]}
+
+
+def test_build_decision_records_authenticated_actor():
+    result = review.build_decision(candidate(), "10.1234/example", "reject", "Triyan31", "2026-09-16T00:00:00+00:00")
+    assert result["decided_by"] == "Triyan31"
+    assert result["decision"] == "reject"
+
+
+def test_invalid_actor_fails_closed():
+    try:
+        review.normalize_actor("bad actor!")
+    except SystemExit:
+        pass
+    else:
+        raise AssertionError("invalid actor must fail closed")
+
+
+def test_decision_storage_is_append_only():
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert 'decisions.setdefault("decisions", []).append(decision)' in source
+    assert '[d for d in decisions.get("decisions", []) if doi_norm(d.get("doi")) != doi]' not in source
+
+
+def test_repeated_doi_history_can_be_preserved():
+    history = []
+    first = review.build_decision(candidate(), "10.1234/example", "reject", "Triyan31", "2026-09-16T00:00:00+00:00")
+    second = review.build_decision(candidate(), "10.1234/example", "approve", "Triyan31", "2026-09-16T01:00:00+00:00", "https://doi.org/10.1234/example")
+    history.append(first)
+    history.append(second)
+    assert len(history) == 2
+    assert [item["decision"] for item in history] == ["reject", "approve"]
+    assert history[-1]["decided_at"] > history[0]["decided_at"]

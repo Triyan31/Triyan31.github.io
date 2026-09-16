@@ -5,7 +5,8 @@ Reject decisions suppress recurring false positives. Approvals require explicit
 source evidence, an exact registered author-name match in the candidate metadata,
 and the DOI/title/author/year machine gate before a record can enter the public
 verified registry. Every persisted decision records the authenticated actor supplied
-by the trusted workflow boundary.
+by the trusted workflow boundary. Decision records are append-only so prior review
+history remains auditable.
 """
 from __future__ import annotations
 
@@ -17,8 +18,6 @@ from datetime import datetime, timezone
 
 from sync_academic import normalize, normalized_doi, verify_publication
 
-# Compatibility aliases keep the review module's existing public helper names while
-# making sync_academic the single canonical implementation of normalization rules.
 normalize_name = normalize
 doi_norm = normalized_doi
 
@@ -129,7 +128,6 @@ def main():
         machine_sources = [e.get("source") for e in verification_result.get("evidence", []) if e.get("source")]
         publication["verification_sources"] = list(dict.fromkeys(publication["verification_sources"] + machine_sources))
 
-    decisions["decisions"] = [d for d in decisions.get("decisions", []) if doi_norm(d.get("doi")) != doi]
     decision = build_decision(candidate, doi, args.action, actor, now, args.evidence_url, args.note)
     if verification_result:
         decision["machine_verification"] = {
@@ -137,7 +135,8 @@ def main():
             "reason": verification_result.get("reason"),
             "sources": [e.get("source") for e in verification_result.get("evidence", []) if e.get("source")],
         }
-    decisions["decisions"].append(decision)
+    # Append-only audit trail: never discard an earlier decision for the same DOI.
+    decisions.setdefault("decisions", []).append(decision)
     decisions["updated_at"] = now
 
     if publication:
