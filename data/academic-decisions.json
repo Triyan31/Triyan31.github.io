@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T07:56:30.310324+00:00",
+  "updated_at": "2026-09-16T08:01:59.552927+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -62,6 +62,16 @@
       "decided_at": "2026-09-16T07:56:30.310324+00:00",
       "decided_by": "Triyan31",
       "title": "Pengaruh Sosialisasisi Perpajakan dan Sanksi Pajak terhadap Kepatuhan Wajib Pajak Orang Pribadi di KPP Pratama Metro",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.31227/osf.io/qh94p",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:01:59.552927+00:00",
+      "decided_by": "Triyan31",
+      "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
