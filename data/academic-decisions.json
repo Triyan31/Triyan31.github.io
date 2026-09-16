@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T08:20:12.679793+00:00",
+  "updated_at": "2026-09-16T08:20:52.550332+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -132,6 +132,16 @@
       "decided_at": "2026-09-16T08:20:12.679793+00:00",
       "decided_by": "Triyan31",
       "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.35316/icorhestech.v1i1.5697",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:20:52.550332+00:00",
+      "decided_by": "Triyan31",
+      "title": "Development of an Information System for Reporting Road Damage in Bandar Lampung City",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
