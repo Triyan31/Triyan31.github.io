@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-09-16T08:06:16.613463+00:00",
+  "generated_at": "2026-09-16T08:08:54.981325+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -21,8 +21,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 8,
-    "suppressed_rejections": 9
+    "discovered_needs_review": 7,
+    "suppressed_rejections": 10
   },
   "publication_verification": [
     {
@@ -195,42 +195,6 @@
   ],
   "discovered_candidates": [
     {
-      "doi": "10.36546/jm.v9i4.499",
-      "title": "PENGARUH  PERSEPSI  HARGA DAN CITRA MEREK TERHADAP KEPUASAN PELANGGAN PENGGUNA  JASA TRANSPORTASI  OJEK ONLINE (STUDI KASUS PELANGGAN GRAB DI KOTA PALEMBANG)",
-      "year": 2022,
-      "venue": "Jurnal Manajemen",
-      "authors": [
-        "Abdullah Rasjid",
-        "Agung Laksono"
-      ],
-      "publisher": "Universitas Palembang",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": true,
-      "matched_author": "Agung Laksono",
-      "author_similarity": 0.7879,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Universitas Palembang",
-        "venue": "Jurnal Manajemen",
-        "work_type": "journal-article",
-        "resource_url": "https://jurnal.unpal.ac.id/index.php/jm/article/view/499",
-        "metadata_links": [
-          "https://jurnal.unpal.ac.id/index.php/jm/article/download/499/431"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
       "doi": "10.24815/jpsi.v10i3.24100",
       "title": "Development of Science Digital Scrapbook as Authentic Assessment to Measure Learning Outcome of Junior High School Students",
       "year": 2022,
@@ -303,21 +267,21 @@
       "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
-      "doi": "10.33258/biolae.v5i2.986",
-      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
-      "year": 2023,
-      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+      "doi": "10.59324/ejaset.2024.2(2).03",
+      "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
+      "year": 2024,
+      "venue": "European Journal of Applied Science, Engineering and Technology",
       "authors": [
-        "Agung Tri Laksono",
-        "Else Liliani"
+        "Dwiaji Agung Laksono",
+        "Ganis Lukmandaru"
       ],
-      "publisher": "Budapest International Research and Critics Institute",
+      "publisher": "AMO Publisher",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
       "identity_name_match": false,
-      "discovery_name_signal": false,
-      "matched_author": null,
-      "author_similarity": 0.0,
+      "discovery_name_signal": true,
+      "matched_author": "Dwiaji Agung Laksono",
+      "author_similarity": 0.8,
       "identity_evidence": {
         "exact_registered_name": false,
         "author_name": null,
@@ -327,49 +291,12 @@
         "evidence_status": "not_established"
       },
       "bibliographic_evidence": {
-        "publisher": "Budapest International Research and Critics Institute",
-        "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+        "publisher": "AMO Publisher",
+        "venue": "European Journal of Applied Science, Engineering and Technology",
         "work_type": "journal-article",
-        "resource_url": "http://biarjournal.com/index.php/biolae/article/view/986",
+        "resource_url": "https://ejaset.com/index.php/journal/article/view/17",
         "metadata_links": [
-          "http://biarjournal.com/index.php/biolae/article/download/986/942"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.1016/j.cegh.2025.102201",
-      "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
-      "year": 2025,
-      "venue": "Clinical Epidemiology and Global Health",
-      "authors": [
-        "Paisal Paisal",
-        "Agung Dwi Laksono"
-      ],
-      "publisher": "Elsevier BV",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": false,
-      "matched_author": null,
-      "author_similarity": 0.0,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Elsevier BV",
-        "venue": "Clinical Epidemiology and Global Health",
-        "work_type": "journal-article",
-        "resource_url": "https://linkinghub.elsevier.com/retrieve/pii/S221339842500291X",
-        "metadata_links": [
-          "https://api.elsevier.com/content/article/PII:S221339842500291X?httpAccept=text/xml",
-          "https://api.elsevier.com/content/article/PII:S221339842500291X?httpAccept=text/plain"
+          "https://ejaset.com/index.php/journal/article/download/17/13"
         ],
         "source": "crossref"
       },
@@ -442,6 +369,42 @@
         "resource_url": "https://scholar.ummetro.ac.id/index.php/armatur/article/view/11865",
         "metadata_links": [
           "https://scholar.ummetro.ac.id/index.php/armatur/article/download/11865/4434"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.33258/biolae.v5i2.986",
+      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
+      "year": 2023,
+      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+      "authors": [
+        "Agung Tri Laksono",
+        "Else Liliani"
+      ],
+      "publisher": "Budapest International Research and Critics Institute",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "discovery_name_signal": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Budapest International Research and Critics Institute",
+        "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+        "work_type": "journal-article",
+        "resource_url": "http://biarjournal.com/index.php/biolae/article/view/986",
+        "metadata_links": [
+          "http://biarjournal.com/index.php/biolae/article/download/986/942"
         ],
         "source": "crossref"
       },
@@ -539,6 +502,13 @@
       "title": "Validation method for determination of cholesterol in human urine with electrochemical sensors using gold electrodes",
       "decision": "reject",
       "decided_at": "2026-09-16T08:06:11.433420+00:00",
+      "decided_by": "Triyan31"
+    },
+    {
+      "doi": "10.36546/jm.v9i4.499",
+      "title": "PENGARUH  PERSEPSI  HARGA DAN CITRA MEREK TERHADAP KEPUASAN PELANGGAN PENGGUNA  JASA TRANSPORTASI  OJEK ONLINE (STUDI KASUS PELANGGAN GRAB DI KOTA PALEMBANG)",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:08:49.386718+00:00",
       "decided_by": "Triyan31"
     },
     {
