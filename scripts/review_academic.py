@@ -12,10 +12,14 @@ import argparse
 import json
 import pathlib
 import re
-import unicodedata
 from datetime import datetime, timezone
 
-from sync_academic import verify_publication
+from sync_academic import normalize, normalized_doi, verify_publication
+
+# Compatibility aliases keep the review module's existing public helper names while
+# making sync_academic the single canonical implementation of normalization rules.
+normalize_name = normalize
+doi_norm = normalized_doi
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -33,20 +37,6 @@ def load(path, default=None):
 
 def save(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
-def doi_norm(value):
-    value = (value or "").strip().lower()
-    for prefix in ("https://doi.org/", "http://doi.org/", "doi:"):
-        if value.startswith(prefix):
-            value = value[len(prefix):]
-    return value.strip()
-
-
-def normalize_name(value):
-    value = unicodedata.normalize("NFKD", str(value or ""))
-    value = "".join(ch for ch in value if not unicodedata.combining(ch)).lower()
-    return " ".join(re.findall(r"[a-z0-9]+", value))
 
 
 def candidate_has_registered_name(person, candidate):
