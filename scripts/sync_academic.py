@@ -4,7 +4,8 @@
 Safety policy:
 - Public publications are never auto-deleted or silently rewritten.
 - DOI records are checked against Crossref and, when available, OpenAlex.
-- Verification compares DOI, normalized title, author identity, and year.
+- Verification compares DOI, normalized title, exact registered author identity, and year.
+- Fuzzy author-name similarity is discovery context only, never identity proof.
 - Ambiguous/mismatched records go to data/academic-review.json.
 - Name-only discoveries are always needs_review and never auto-published.
 - DOI-less publisher records remain manual-review records.
@@ -28,7 +29,7 @@ PUBS = DATA / "publications.json"
 IDENTITY = DATA / "academic-identity.json"
 REVIEW = DATA / "academic-review.json"
 DECISIONS = DATA / "academic-decisions.json"
-USER_AGENT = "Triyan31-academic-sync/2.2 (GitHub Pages academic portfolio)"
+USER_AGENT = "Triyan31-academic-sync/2.3 (GitHub Pages academic portfolio)"
 TITLE_THRESHOLD = 0.88
 
 
@@ -90,11 +91,6 @@ def crossref_author_names(item):
 
 
 def crossref_author_evidence(item, person):
-    """Return metadata attached only to an exact registered-name author entry.
-
-    Crossref affiliation and ORCID values are reported metadata. They are useful
-    corroboration for a reviewer but are not treated as verified identity proof.
-    """
     target = normalize(person)
     for author in item.get("author", []):
         display_name = " ".join(x for x in (author.get("given", ""), author.get("family", "")) if x).strip()
@@ -105,22 +101,8 @@ def crossref_author_evidence(item, person):
             name = (affiliation.get("name") or "").strip()
             if name and name not in affiliations:
                 affiliations.append(name)
-        return {
-            "exact_registered_name": True,
-            "author_name": display_name,
-            "orcid": normalized_orcid(author.get("ORCID")),
-            "affiliations": affiliations,
-            "source": "crossref",
-            "evidence_status": "reported_metadata",
-        }
-    return {
-        "exact_registered_name": False,
-        "author_name": None,
-        "orcid": None,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established",
-    }
+        return {"exact_registered_name": True, "author_name": display_name, "orcid": normalized_orcid(author.get("ORCID")), "affiliations": affiliations, "source": "crossref", "evidence_status": "reported_metadata"}
+    return {"exact_registered_name": False, "author_name": None, "orcid": None, "affiliations": [], "source": "crossref", "evidence_status": "not_established"}
 
 
 def crossref_bibliographic_evidence(item):
@@ -130,14 +112,7 @@ def crossref_bibliographic_evidence(item):
         if url and url not in links:
             links.append(url)
     resource_url = ((item.get("resource") or {}).get("primary") or {}).get("URL")
-    return {
-        "publisher": item.get("publisher"),
-        "venue": (item.get("container-title") or [None])[0],
-        "work_type": item.get("type"),
-        "resource_url": resource_url,
-        "metadata_links": links[:5],
-        "source": "crossref",
-    }
+    return {"publisher": item.get("publisher"), "venue": (item.get("container-title") or [None])[0], "work_type": item.get("type"), "resource_url": resource_url, "metadata_links": links[:5], "source": "crossref"}
 
 
 def openalex_author_names(item):
@@ -157,11 +132,23 @@ def crossref_year(item):
     return None
 
 
+def exact_person_match(person, authors):
+    """Identity gate: only the normalized registered name is proof of author match."""
+    target = normalize(person)
+    if not target:
+        return False, None, 0.0
+    for author in authors or []:
+        if normalize(author) == target:
+            return True, author, 1.0
+    return False, None, 0.0
+
+
 def person_matches(person, authors):
+    """Discovery-only fuzzy signal. Never use this result as identity proof."""
     target = normalize(person)
     target_parts = target.split()
     family = target_parts[-1] if target_parts else ""
-    for author in authors:
+    for author in authors or []:
         candidate = normalize(author)
         if candidate == target:
             return True, author, 1.0
@@ -173,23 +160,11 @@ def person_matches(person, authors):
 
 def evaluate_source(person, local, source_name, source_title, source_year, source_authors, source_doi=None):
     title_score = similarity(local.get("title"), source_title)
-    author_ok, matched_author, author_score = person_matches(person, source_authors)
+    author_ok, matched_author, author_score = exact_person_match(person, source_authors)
     local_year = local.get("year")
     year_ok = bool(local_year and source_year and int(local_year) == int(source_year))
     doi_ok = True if not local.get("doi") else normalized_doi(local.get("doi")) == normalized_doi(source_doi or local.get("doi"))
-    return {
-        "source": source_name,
-        "doi_match": doi_ok,
-        "title_match": title_score >= TITLE_THRESHOLD,
-        "title_similarity": title_score,
-        "author_match": author_ok,
-        "matched_author": matched_author,
-        "author_similarity": author_score,
-        "year_match": year_ok,
-        "source_title": source_title,
-        "source_year": source_year,
-        "source_authors": source_authors,
-    }
+    return {"source": source_name, "doi_match": doi_ok, "title_match": title_score >= TITLE_THRESHOLD, "title_similarity": title_score, "author_match": author_ok, "author_match_policy": "exact_registered_name", "matched_author": matched_author, "author_similarity": author_score, "year_match": year_ok, "source_title": source_title, "source_year": source_year, "source_authors": source_authors}
 
 
 def decision(evidence):
@@ -198,8 +173,8 @@ def decision(evidence):
     primary = evidence[0]
     core = primary["doi_match"] and primary["title_match"] and primary["author_match"] and primary["year_match"]
     if core:
-        return "verified", "DOI, title, author identity, and year match the primary bibliographic source."
-    failed = [label for key, label in (("doi_match", "DOI"), ("title_match", "title"), ("author_match", "author"), ("year_match", "year")) if not primary[key]]
+        return "verified", "DOI, title, exact registered author identity, and year match the primary bibliographic source."
+    failed = [label for key, label in (("doi_match", "DOI"), ("title_match", "title"), ("author_match", "author identity"), ("year_match", "year")) if not primary[key]]
     return "needs_review", f"Primary-source comparison requires review: {', '.join(failed)} did not match confidently."
 
 
@@ -236,7 +211,6 @@ def main():
     records = pubs.get("publications", [])
     existing = {normalized_doi(p.get("doi")) for p in records if p.get("doi")}
     verification = [verify_publication(person, publication) for publication in records]
-
     candidates = []
     suppressed = []
     try:
@@ -249,58 +223,16 @@ def main():
                 suppressed.append({"doi": doi, "title": crossref_title(item), "decision": "reject", "decided_at": prior.get("decided_at")})
                 continue
             authors = crossref_author_names(item)
-            author_ok, matched_author, author_score = person_matches(person, authors)
+            discovery_match, matched_author, author_score = person_matches(person, authors)
             identity_evidence = crossref_author_evidence(item, person)
-            candidate = {
-                "doi": doi,
-                "title": crossref_title(item),
-                "year": crossref_year(item),
-                "venue": (item.get("container-title") or [None])[0],
-                "authors": authors,
-                "publisher": item.get("publisher"),
-                "source": "crossref-name-discovery",
-                "verification": "needs_review",
-                "identity_name_match": author_ok,
-                "matched_author": matched_author,
-                "author_similarity": author_score,
-                "identity_evidence": identity_evidence,
-                "bibliographic_evidence": crossref_bibliographic_evidence(item),
-                "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-            }
+            candidate = {"doi": doi, "title": crossref_title(item), "year": crossref_year(item), "venue": (item.get("container-title") or [None])[0], "authors": authors, "publisher": item.get("publisher"), "source": "crossref-name-discovery", "verification": "needs_review", "identity_name_match": identity_evidence["exact_registered_name"], "discovery_name_signal": discovery_match, "matched_author": matched_author, "author_similarity": author_score, "identity_evidence": identity_evidence, "bibliographic_evidence": crossref_bibliographic_evidence(item), "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."}
             if prior:
                 candidate["prior_decision"] = prior
             candidates.append(candidate)
     except Exception as exc:
         candidates.append({"source": "crossref-name-discovery", "verification": "lookup_failed", "error": str(exc)[:240]})
 
-    report = {
-        "schema_version": 4,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "person": person,
-        "policy": {
-            "auto_publish": False,
-            "auto_delete": False,
-            "auto_mutate_public_records": False,
-            "name_match_is_proof": False,
-            "reported_affiliation_or_orcid_is_proof": False,
-            "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
-            "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
-            "title_similarity_threshold": TITLE_THRESHOLD,
-            "review_required_for_mismatch": True,
-            "rejected_candidates_suppressed": True
-        },
-        "verification_summary": {
-            "total_public_records": len(records),
-            "machine_verified": sum(v.get("recommended_status") == "verified" for v in verification),
-            "manual_verified": sum(v.get("recommended_status") == "manual_verified" for v in verification),
-            "needs_review": sum(v.get("recommended_status") == "needs_review" for v in verification),
-            "discovered_needs_review": len(candidates),
-            "suppressed_rejections": len(suppressed)
-        },
-        "publication_verification": verification,
-        "discovered_candidates": candidates,
-        "suppressed_candidates": suppressed
-    }
+    report = {"schema_version": 5, "generated_at": datetime.now(timezone.utc).isoformat(), "person": person, "policy": {"auto_publish": False, "auto_delete": False, "auto_mutate_public_records": False, "name_match_is_proof": False, "fuzzy_name_match_is_discovery_only": True, "machine_author_identity_requires_exact_registered_name": True, "reported_affiliation_or_orcid_is_proof": False, "machine_verified_rule": "DOI + normalized title + exact registered author identity + publication year must match primary bibliographic metadata.", "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.", "title_similarity_threshold": TITLE_THRESHOLD, "review_required_for_mismatch": True, "rejected_candidates_suppressed": True}, "verification_summary": {"total_public_records": len(records), "machine_verified": sum(v.get("recommended_status") == "verified" for v in verification), "manual_verified": sum(v.get("recommended_status") == "manual_verified" for v in verification), "needs_review": sum(v.get("recommended_status") == "needs_review" for v in verification), "discovered_needs_review": len(candidates), "suppressed_rejections": len(suppressed)}, "publication_verification": verification, "discovered_candidates": candidates, "suppressed_candidates": suppressed}
     REVIEW.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     summary = report["verification_summary"]
     print(f"Checked {summary['total_public_records']} public record(s): {summary['machine_verified']} machine verified, {summary['manual_verified']} manual-source verified, {summary['needs_review']} need review; discovered {len(candidates)} candidate(s), suppressed {len(suppressed)} rejected candidate(s).")

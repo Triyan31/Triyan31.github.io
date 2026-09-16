@@ -39,18 +39,48 @@ class AcademicReviewSafetyTests(unittest.TestCase):
             review_academic.find_candidate(report, "10.1234/not-this")
 
 
+class AcademicIdentityVerificationGateTests(unittest.TestCase):
+    def test_exact_person_match_accepts_registered_name(self):
+        ok, author, score = sync_academic.exact_person_match("Triyan Agung Laksono", ["Triyan Agung Laksono"])
+        self.assertTrue(ok)
+        self.assertEqual(author, "Triyan Agung Laksono")
+        self.assertEqual(score, 1.0)
+
+    def test_exact_person_match_rejects_similar_same_family_name(self):
+        ok, author, score = sync_academic.exact_person_match("Triyan Agung Laksono", ["Agung Dwi Laksono"])
+        self.assertFalse(ok)
+        self.assertIsNone(author)
+        self.assertEqual(score, 0.0)
+
+    def test_fuzzy_signal_remains_available_for_discovery_only(self):
+        discovery_ok, _, score = sync_academic.person_matches("Triyan Agung Laksono", ["Tri Agung Hari Laksono"])
+        self.assertTrue(discovery_ok)
+        self.assertGreaterEqual(score, 0.72)
+        exact_ok, _, _ = sync_academic.exact_person_match("Triyan Agung Laksono", ["Tri Agung Hari Laksono"])
+        self.assertFalse(exact_ok)
+
+    def test_machine_source_gate_rejects_fuzzy_only_author(self):
+        local = {"title": "Example Work", "year": 2024, "doi": "10.1234/example"}
+        result = sync_academic.evaluate_source("Triyan Agung Laksono", local, "crossref", "Example Work", 2024, ["Tri Agung Hari Laksono"], "10.1234/example")
+        self.assertFalse(result["author_match"])
+        self.assertEqual(result["author_match_policy"], "exact_registered_name")
+
+    def test_machine_source_gate_accepts_exact_normalized_author(self):
+        local = {"title": "Example Work", "year": 2024, "doi": "10.1234/example"}
+        result = sync_academic.evaluate_source("Triyan Agung Laksono", local, "crossref", "Example Work", 2024, ["TRIYAN AGUNG LAKSONO"], "10.1234/example")
+        self.assertTrue(result["author_match"])
+        self.assertEqual(result["author_similarity"], 1.0)
+
+    def test_decision_fails_closed_when_only_author_identity_fails(self):
+        evidence = [{"doi_match": True, "title_match": True, "author_match": False, "year_match": True}]
+        status, reason = sync_academic.decision(evidence)
+        self.assertEqual(status, "needs_review")
+        self.assertIn("author identity", reason)
+
+
 class AcademicEvidenceEnrichmentTests(unittest.TestCase):
     def test_crossref_exact_author_metadata_is_exposed_as_reported_evidence(self):
-        item = {
-            "author": [
-                {
-                    "given": "Triyan Agung",
-                    "family": "Laksono",
-                    "ORCID": "https://orcid.org/0000-0002-1825-0097",
-                    "affiliation": [{"name": "Example University"}],
-                }
-            ]
-        }
+        item = {"author": [{"given": "Triyan Agung", "family": "Laksono", "ORCID": "https://orcid.org/0000-0002-1825-0097", "affiliation": [{"name": "Example University"}]}]}
         evidence = sync_academic.crossref_author_evidence(item, "Triyan Agung Laksono")
         self.assertTrue(evidence["exact_registered_name"])
         self.assertEqual(evidence["orcid"], "0000-0002-1825-0097")
@@ -58,16 +88,7 @@ class AcademicEvidenceEnrichmentTests(unittest.TestCase):
         self.assertEqual(evidence["evidence_status"], "reported_metadata")
 
     def test_similar_but_nonexact_author_does_not_inherit_identity_metadata(self):
-        item = {
-            "author": [
-                {
-                    "given": "Agung Dwi",
-                    "family": "Laksono",
-                    "ORCID": "https://orcid.org/0000-0002-1825-0097",
-                    "affiliation": [{"name": "Other Institution"}],
-                }
-            ]
-        }
+        item = {"author": [{"given": "Agung Dwi", "family": "Laksono", "ORCID": "https://orcid.org/0000-0002-1825-0097", "affiliation": [{"name": "Other Institution"}]}]}
         evidence = sync_academic.crossref_author_evidence(item, "Triyan Agung Laksono")
         self.assertFalse(evidence["exact_registered_name"])
         self.assertIsNone(evidence["orcid"])
@@ -75,13 +96,7 @@ class AcademicEvidenceEnrichmentTests(unittest.TestCase):
         self.assertEqual(evidence["evidence_status"], "not_established")
 
     def test_crossref_bibliographic_evidence_preserves_source_provenance(self):
-        item = {
-            "publisher": "Example Publisher",
-            "container-title": ["Example Journal"],
-            "type": "journal-article",
-            "resource": {"primary": {"URL": "https://example.org/article"}},
-            "link": [{"URL": "https://example.org/pdf"}, {"URL": "https://example.org/pdf"}],
-        }
+        item = {"publisher": "Example Publisher", "container-title": ["Example Journal"], "type": "journal-article", "resource": {"primary": {"URL": "https://example.org/article"}}, "link": [{"URL": "https://example.org/pdf"}, {"URL": "https://example.org/pdf"}]}
         evidence = sync_academic.crossref_bibliographic_evidence(item)
         self.assertEqual(evidence["publisher"], "Example Publisher")
         self.assertEqual(evidence["venue"], "Example Journal")
