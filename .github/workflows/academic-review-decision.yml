@@ -48,10 +48,11 @@ jobs:
         env:
           DECISION_ACTION: ${{ inputs.action }}
           DECISION_DOI: ${{ inputs.doi }}
+          DECISION_ACTOR: ${{ github.actor }}
           EVIDENCE_URL: ${{ inputs.evidence_url }}
           REVIEW_NOTE: ${{ inputs.note }}
         run: |
-          args=("$DECISION_ACTION" --doi "$DECISION_DOI")
+          args=("$DECISION_ACTION" --doi "$DECISION_DOI" --actor "$DECISION_ACTOR")
           if [ -n "$EVIDENCE_URL" ]; then args+=(--evidence-url "$EVIDENCE_URL"); fi
           if [ -n "$REVIEW_NOTE" ]; then args+=(--note "$REVIEW_NOTE"); fi
           python scripts/review_academic.py "${args[@]}"
@@ -76,5 +77,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- "${files[@]}"
-          git commit -m "Record academic review decision for ${{ inputs.doi }}"
+          git commit -m "Record academic review decision for ${{ inputs.doi }} by ${{ github.actor }}"
           git push origin HEAD:main
