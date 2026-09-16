@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-09-16T08:04:20.775734+00:00",
+  "generated_at": "2026-09-16T08:06:16.613463+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -195,42 +195,6 @@
   ],
   "discovered_candidates": [
     {
-      "doi": "10.1063/1.5016026",
-      "title": "Validation method for determination of cholesterol in human urine with electrochemical sensors using gold electrodes",
-      "year": 2017,
-      "venue": "AIP Conference Proceedings",
-      "authors": [
-        "Riyanto",
-        "Tomy Agung Laksono"
-      ],
-      "publisher": "Author(s)",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": true,
-      "matched_author": "Tomy Agung Laksono",
-      "author_similarity": 0.8421,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Author(s)",
-        "venue": "AIP Conference Proceedings",
-        "work_type": "proceedings-article",
-        "resource_url": "https://pubs.aip.org/aip/acp/article/720751",
-        "metadata_links": [
-          "http://aip.scitation.org/doi/pdf/10.1063/1.5016026"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
       "doi": "10.36546/jm.v9i4.499",
       "title": "PENGARUH  PERSEPSI  HARGA DAN CITRA MEREK TERHADAP KEPUASAN PELANGGAN PENGGUNA  JASA TRANSPORTASI  OJEK ONLINE (STUDI KASUS PELANGGAN GRAB DI KOTA PALEMBANG)",
       "year": 2022,
@@ -375,42 +339,6 @@
       "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
-      "doi": "10.46369/logistik.v12i2.2814",
-      "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
-      "year": 2022,
-      "venue": "Jurnal Logistik Bisnis",
-      "authors": [
-        "Darfial Guslan",
-        "Didi Agung Laksono"
-      ],
-      "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": true,
-      "matched_author": "Didi Agung Laksono",
-      "author_similarity": 0.7895,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
-        "venue": "Jurnal Logistik Bisnis",
-        "work_type": "journal-article",
-        "resource_url": "https://ejurnal.ulbi.ac.id/index.php/logistik/article/view/2814",
-        "metadata_links": [
-          "https://ejurnal.ulbi.ac.id/index.php/logistik/article/download/2814/1079"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
       "doi": "10.1016/j.cegh.2025.102201",
       "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
       "year": 2025,
@@ -448,21 +376,21 @@
       "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
-      "doi": "10.59324/ejaset.2024.2(2).03",
-      "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
-      "year": 2024,
-      "venue": "European Journal of Applied Science, Engineering and Technology",
+      "doi": "10.24076/joism.2020v1i2.443",
+      "title": "METODE MYER BRIGGS TYPE INDICATOR (MBTI) UNTUK TES KEPRIBADIAN SEBAGAI MEDIA PENGEMBANGAN DIRI",
+      "year": 2020,
+      "venue": "Journal of Information System Management (JOISM)",
       "authors": [
-        "Dwiaji Agung Laksono",
-        "Ganis Lukmandaru"
+        "Wisnu Agung Laksono",
+        "Yuli Astuti"
       ],
-      "publisher": "AMO Publisher",
+      "publisher": "STMIK AMIKOM Yogyakarta",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
       "identity_name_match": false,
       "discovery_name_signal": true,
-      "matched_author": "Dwiaji Agung Laksono",
-      "author_similarity": 0.8,
+      "matched_author": "Wisnu Agung Laksono",
+      "author_similarity": 0.8205,
       "identity_evidence": {
         "exact_registered_name": false,
         "author_name": null,
@@ -472,12 +400,84 @@
         "evidence_status": "not_established"
       },
       "bibliographic_evidence": {
-        "publisher": "AMO Publisher",
-        "venue": "European Journal of Applied Science, Engineering and Technology",
+        "publisher": "STMIK AMIKOM Yogyakarta",
+        "venue": "Journal of Information System Management (JOISM)",
         "work_type": "journal-article",
-        "resource_url": "https://ejaset.com/index.php/journal/article/view/17",
+        "resource_url": "https://jurnal.amikom.ac.id/index.php/joism/article/view/443",
         "metadata_links": [
-          "https://ejaset.com/index.php/journal/article/download/17/13"
+          "https://jurnal.amikom.ac.id/index.php/joism/article/download/443/205"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.24127/armatur.v7i2.11865",
+      "title": "Analisis Penyimpangan Fasa dan Sifat Mekanik pada Baja Paduan Hasil Pengecoran Konvensional di Bengkel Tenayan Pekanbaru",
+      "year": 2026,
+      "venue": "ARMATUR : Artikel Teknik Mesin &amp; Manufaktur",
+      "authors": [
+        "Agung Laksono Yudho",
+        "Farhan Anggriawan"
+      ],
+      "publisher": "Muhammadiyah Metro University",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "discovery_name_signal": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Muhammadiyah Metro University",
+        "venue": "ARMATUR : Artikel Teknik Mesin &amp; Manufaktur",
+        "work_type": "journal-article",
+        "resource_url": "https://scholar.ummetro.ac.id/index.php/armatur/article/view/11865",
+        "metadata_links": [
+          "https://scholar.ummetro.ac.id/index.php/armatur/article/download/11865/4434"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.46369/logistik.v12i2.2814",
+      "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
+      "year": 2022,
+      "venue": "Jurnal Logistik Bisnis",
+      "authors": [
+        "Darfial Guslan",
+        "Didi Agung Laksono"
+      ],
+      "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "discovery_name_signal": true,
+      "matched_author": "Didi Agung Laksono",
+      "author_similarity": 0.7895,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
+        "venue": "Jurnal Logistik Bisnis",
+        "work_type": "journal-article",
+        "resource_url": "https://ejurnal.ulbi.ac.id/index.php/logistik/article/view/2814",
+        "metadata_links": [
+          "https://ejurnal.ulbi.ac.id/index.php/logistik/article/download/2814/1079"
         ],
         "source": "crossref"
       },
@@ -535,17 +535,17 @@
       "decided_by": "Triyan31"
     },
     {
+      "doi": "10.1063/1.5016026",
+      "title": "Validation method for determination of cholesterol in human urine with electrochemical sensors using gold electrodes",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:06:11.433420+00:00",
+      "decided_by": "Triyan31"
+    },
+    {
       "doi": "10.31227/osf.io/qh94p",
       "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
       "decision": "reject",
       "decided_at": "2026-09-16T08:01:59.552927+00:00",
-      "decided_by": "Triyan31"
-    },
-    {
-      "doi": "10.37506/ijfmt.v15i3.15857",
-      "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
-      "decision": "reject",
-      "decided_at": "2026-09-16T08:04:15.153355+00:00",
       "decided_by": "Triyan31"
     }
   ]

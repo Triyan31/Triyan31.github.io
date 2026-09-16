@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T08:04:15.153355+00:00",
+  "updated_at": "2026-09-16T08:06:11.433420+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -82,6 +82,16 @@
       "decided_at": "2026-09-16T08:04:15.153355+00:00",
       "decided_by": "Triyan31",
       "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.1063/1.5016026",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:06:11.433420+00:00",
+      "decided_by": "Triyan31",
+      "title": "Validation method for determination of cholesterol in human urine with electrochemical sensors using gold electrodes",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
