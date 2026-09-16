@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-09-16T08:02:05.529753+00:00",
+  "generated_at": "2026-09-16T08:04:20.775734+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -21,8 +21,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 9,
-    "suppressed_rejections": 8
+    "discovered_needs_review": 8,
+    "suppressed_rejections": 9
   },
   "publication_verification": [
     {
@@ -482,43 +482,6 @@
         "source": "crossref"
       },
       "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.37506/ijfmt.v15i3.15857",
-      "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
-      "year": 2021,
-      "venue": "Indian Journal of Forensic Medicine &amp; Toxicology",
-      "authors": [
-        "Mara Ipa",
-        "Agung Dwi Laksono"
-      ],
-      "publisher": "Institute of Medico-legal Publications Private Limited",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": false,
-      "matched_author": null,
-      "author_similarity": 0.0,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Institute of Medico-legal Publications Private Limited",
-        "venue": "Indian Journal of Forensic Medicine &amp; Toxicology",
-        "work_type": "journal-article",
-        "resource_url": "https://www.medicopublication.com/index.php/ijfmt/article/view/15857",
-        "metadata_links": [
-          "https://www.medicopublication.com/index.php/ijfmt/article/download/15857/14218",
-          "http://medicopublication.com/index.php/ijfmt/article/download/15857/14218"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     }
   ],
   "suppressed_candidates": [
@@ -576,6 +539,13 @@
       "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
       "decision": "reject",
       "decided_at": "2026-09-16T08:01:59.552927+00:00",
+      "decided_by": "Triyan31"
+    },
+    {
+      "doi": "10.37506/ijfmt.v15i3.15857",
+      "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:04:15.153355+00:00",
       "decided_by": "Triyan31"
     }
   ]
