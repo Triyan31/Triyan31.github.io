@@ -1,12 +1,21 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T01:13:33.275595+00:00",
+  "updated_at": "2026-09-16T01:15:19.714585+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
       "decision": "reject",
       "decided_at": "2026-09-16T01:13:33.275595+00:00",
       "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.64628/aan.vjxq6jv6a",
+      "decision": "reject",
+      "decided_at": "2026-09-16T01:15:19.714585+00:00",
+      "title": "Riset: suami di perkotaan lebih banyak terlibat dalam pemeriksaan kehamilan istri dibanding suami di pedesaan",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""

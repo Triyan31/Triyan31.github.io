@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-09-16T01:13:37.901066+00:00",
+  "generated_at": "2026-09-16T01:15:22.741958+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -18,8 +18,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 16,
-    "suppressed_rejections": 1
+    "discovered_needs_review": 15,
+    "suppressed_rejections": 2
   },
   "publication_verification": [
     {
@@ -185,22 +185,6 @@
     }
   ],
   "discovered_candidates": [
-    {
-      "doi": "10.64628/aan.vjxq6jv6a",
-      "title": "Riset: suami di perkotaan lebih banyak terlibat dalam pemeriksaan kehamilan istri dibanding suami di pedesaan",
-      "year": 2022,
-      "venue": null,
-      "authors": [
-        "Agung Laksono"
-      ],
-      "publisher": "The Conversation",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Agung Laksono",
-      "author_similarity": 0.7879,
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
     {
       "doi": "10.31227/osf.io/rvzhc",
       "title": "Mendekatkan Pelayanan Kesehatan  yang Berkualitas pada Masyarakat",
@@ -459,6 +443,12 @@
       "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
       "decision": "reject",
       "decided_at": "2026-09-16T01:13:33.275595+00:00"
+    },
+    {
+      "doi": "10.64628/aan.vjxq6jv6a",
+      "title": "Riset: suami di perkotaan lebih banyak terlibat dalam pemeriksaan kehamilan istri dibanding suami di pedesaan",
+      "decision": "reject",
+      "decided_at": "2026-09-16T01:15:19.714585+00:00"
     }
   ]
 }
