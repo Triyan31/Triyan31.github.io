@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-09-15T06:51:11.332114+00:00",
+  "schema_version": 3,
+  "generated_at": "2026-09-16T01:13:37.901066+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -10,13 +10,16 @@
     "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
     "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
     "title_similarity_threshold": 0.88,
-    "review_required_for_mismatch": true
+    "review_required_for_mismatch": true,
+    "rejected_candidates_suppressed": true
   },
   "verification_summary": {
     "total_public_records": 5,
     "machine_verified": 3,
     "manual_verified": 2,
-    "needs_review": 0
+    "needs_review": 0,
+    "discovered_needs_review": 16,
+    "suppressed_rejections": 1
   },
   "publication_verification": [
     {
@@ -182,22 +185,6 @@
     }
   ],
   "discovered_candidates": [
-    {
-      "doi": "10.33795/jip.v9i1.1155",
-      "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
-      "year": 2022,
-      "venue": "Jurnal Informatika Polinema",
-      "authors": [
-        "Agung Laksono"
-      ],
-      "publisher": "Politeknik Negeri Malang",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Agung Laksono",
-      "author_similarity": 0.7879,
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
     {
       "doi": "10.64628/aan.vjxq6jv6a",
       "title": "Riset: suami di perkotaan lebih banyak terlibat dalam pemeriksaan kehamilan istri dibanding suami di pedesaan",
@@ -381,15 +368,32 @@
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
-      "doi": "10.1016/j.cegh.2025.102201",
-      "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
-      "year": 2025,
-      "venue": "Clinical Epidemiology and Global Health",
+      "doi": "10.24076/joism.2020v1i2.443",
+      "title": "METODE MYER BRIGGS TYPE INDICATOR (MBTI) UNTUK TES KEPRIBADIAN SEBAGAI MEDIA PENGEMBANGAN DIRI",
+      "year": 2020,
+      "venue": "Journal of Information System Management (JOISM)",
       "authors": [
-        "Paisal Paisal",
-        "Agung Dwi Laksono"
+        "Wisnu Agung Laksono",
+        "Yuli Astuti"
       ],
-      "publisher": "Elsevier BV",
+      "publisher": "STMIK AMIKOM Yogyakarta",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": true,
+      "matched_author": "Wisnu Agung Laksono",
+      "author_similarity": 0.8205,
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.24127/armatur.v7i2.11865",
+      "title": "Analisis Penyimpangan Fasa dan Sifat Mekanik pada Baja Paduan Hasil Pengecoran Konvensional di Bengkel Tenayan Pekanbaru",
+      "year": 2026,
+      "venue": "ARMATUR : Artikel Teknik Mesin &amp; Manufaktur",
+      "authors": [
+        "Agung Laksono Yudho",
+        "Farhan Anggriawan"
+      ],
+      "publisher": "Muhammadiyah Metro University",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
       "identity_name_match": false,
@@ -447,23 +451,14 @@
       "matched_author": "Didi Agung Laksono",
       "author_similarity": 0.7895,
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
+    }
+  ],
+  "suppressed_candidates": [
     {
-      "doi": "10.37742/jo.v3i2.72",
-      "title": "Ketersediaan Infrastruktur Olahraga dan Dukungan Pimpinan terhadap Frekuensi Partisipasi Olahraga",
-      "year": 2017,
-      "venue": "Jurnal Olahraga",
-      "authors": [
-        "Sandi Dwi Triono",
-        "Agung Laksono"
-      ],
-      "publisher": "STKIP Pasundan",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Agung Laksono",
-      "author_similarity": 0.7879,
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "doi": "10.33795/jip.v9i1.1155",
+      "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
+      "decision": "reject",
+      "decided_at": "2026-09-16T01:13:33.275595+00:00"
     }
   ]
 }

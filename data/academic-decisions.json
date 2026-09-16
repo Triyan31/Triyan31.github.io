@@ -1,5 +1,15 @@
 {
   "schema_version": 1,
-  "updated_at": null,
-  "decisions": []
+  "updated_at": "2026-09-16T01:13:33.275595+00:00",
+  "decisions": [
+    {
+      "doi": "10.33795/jip.v9i1.1155",
+      "decision": "reject",
+      "decided_at": "2026-09-16T01:13:33.275595+00:00",
+      "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    }
+  ]
 }
