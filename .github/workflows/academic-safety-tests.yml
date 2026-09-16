@@ -60,3 +60,5 @@ jobs:
           python -m json.tool data/academic-identity.json >/dev/null
           python -m json.tool data/publications.json >/dev/null
           python -m json.tool data/academic-decisions.json >/dev/null
+          python -m json.tool data/academic-review.json >/dev/null
+          python -m json.tool data/academic.json >/dev/null
