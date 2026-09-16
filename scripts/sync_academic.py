@@ -9,6 +9,7 @@ Safety policy:
 - Name-only discoveries are always needs_review and never auto-published.
 - DOI-less publisher records remain manual-review records.
 - Explicit review decisions are persisted so rejected candidates do not reappear.
+- Upstream affiliation/ORCID metadata is evidence context, never proof by itself.
 """
 from __future__ import annotations
 
@@ -27,7 +28,7 @@ PUBS = DATA / "publications.json"
 IDENTITY = DATA / "academic-identity.json"
 REVIEW = DATA / "academic-review.json"
 DECISIONS = DATA / "academic-decisions.json"
-USER_AGENT = "Triyan31-academic-sync/2.1 (GitHub Pages academic portfolio)"
+USER_AGENT = "Triyan31-academic-sync/2.2 (GitHub Pages academic portfolio)"
 TITLE_THRESHOLD = 0.88
 
 
@@ -72,12 +73,71 @@ def normalized_doi(value):
     return value.strip()
 
 
+def normalized_orcid(value):
+    value = (value or "").strip()
+    for prefix in ("https://orcid.org/", "http://orcid.org/"):
+        if value.lower().startswith(prefix):
+            value = value[len(prefix):]
+    return value.strip() or None
+
+
 def similarity(a, b):
     return round(difflib.SequenceMatcher(None, normalize(a), normalize(b)).ratio(), 4)
 
 
 def crossref_author_names(item):
     return [" ".join(x for x in (a.get("given", ""), a.get("family", "")) if x).strip() for a in item.get("author", [])]
+
+
+def crossref_author_evidence(item, person):
+    """Return metadata attached only to an exact registered-name author entry.
+
+    Crossref affiliation and ORCID values are reported metadata. They are useful
+    corroboration for a reviewer but are not treated as verified identity proof.
+    """
+    target = normalize(person)
+    for author in item.get("author", []):
+        display_name = " ".join(x for x in (author.get("given", ""), author.get("family", "")) if x).strip()
+        if not target or normalize(display_name) != target:
+            continue
+        affiliations = []
+        for affiliation in author.get("affiliation") or []:
+            name = (affiliation.get("name") or "").strip()
+            if name and name not in affiliations:
+                affiliations.append(name)
+        return {
+            "exact_registered_name": True,
+            "author_name": display_name,
+            "orcid": normalized_orcid(author.get("ORCID")),
+            "affiliations": affiliations,
+            "source": "crossref",
+            "evidence_status": "reported_metadata",
+        }
+    return {
+        "exact_registered_name": False,
+        "author_name": None,
+        "orcid": None,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established",
+    }
+
+
+def crossref_bibliographic_evidence(item):
+    links = []
+    for link in item.get("link") or []:
+        url = (link.get("URL") or "").strip()
+        if url and url not in links:
+            links.append(url)
+    resource_url = ((item.get("resource") or {}).get("primary") or {}).get("URL")
+    return {
+        "publisher": item.get("publisher"),
+        "venue": (item.get("container-title") or [None])[0],
+        "work_type": item.get("type"),
+        "resource_url": resource_url,
+        "metadata_links": links[:5],
+        "source": "crossref",
+    }
 
 
 def openalex_author_names(item):
@@ -190,6 +250,7 @@ def main():
                 continue
             authors = crossref_author_names(item)
             author_ok, matched_author, author_score = person_matches(person, authors)
+            identity_evidence = crossref_author_evidence(item, person)
             candidate = {
                 "doi": doi,
                 "title": crossref_title(item),
@@ -202,6 +263,8 @@ def main():
                 "identity_name_match": author_ok,
                 "matched_author": matched_author,
                 "author_similarity": author_score,
+                "identity_evidence": identity_evidence,
+                "bibliographic_evidence": crossref_bibliographic_evidence(item),
                 "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
             }
             if prior:
@@ -211,7 +274,7 @@ def main():
         candidates.append({"source": "crossref-name-discovery", "verification": "lookup_failed", "error": str(exc)[:240]})
 
     report = {
-        "schema_version": 3,
+        "schema_version": 4,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "person": person,
         "policy": {
@@ -219,6 +282,7 @@ def main():
             "auto_delete": False,
             "auto_mutate_public_records": False,
             "name_match_is_proof": False,
+            "reported_affiliation_or_orcid_is_proof": False,
             "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
             "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
             "title_similarity_threshold": TITLE_THRESHOLD,
