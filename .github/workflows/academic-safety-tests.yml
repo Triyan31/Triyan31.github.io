@@ -9,7 +9,6 @@ on:
       - 'data/academic-decisions.json'
       - 'data/publications.json'
       - 'data/academic-review.json'
-      - 'data/academic.json'
       - 'review.html'
       - 'review.js'
       - 'review-integrity.js'
@@ -25,7 +24,6 @@ on:
       - 'data/academic-decisions.json'
       - 'data/publications.json'
       - 'data/academic-review.json'
-      - 'data/academic.json'
       - 'review.html'
       - 'review.js'
       - 'review-integrity.js'
@@ -61,4 +59,3 @@ jobs:
           python -m json.tool data/publications.json >/dev/null
           python -m json.tool data/academic-decisions.json >/dev/null
           python -m json.tool data/academic-review.json >/dev/null
-          python -m json.tool data/academic.json >/dev/null
