@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T08:08:49.386718+00:00",
+  "updated_at": "2026-09-16T08:13:33.926493+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -102,6 +102,16 @@
       "decided_at": "2026-09-16T08:08:49.386718+00:00",
       "decided_by": "Triyan31",
       "title": "PENGARUH  PERSEPSI  HARGA DAN CITRA MEREK TERHADAP KEPUASAN PELANGGAN PENGGUNA  JASA TRANSPORTASI  OJEK ONLINE (STUDI KASUS PELANGGAN GRAB DI KOTA PALEMBANG)",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.46369/logistik.v12i2.2814",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:13:33.926493+00:00",
+      "decided_by": "Triyan31",
+      "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
