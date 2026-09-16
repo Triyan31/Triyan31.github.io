@@ -1,12 +1,13 @@
 {
-  "schema_version": 3,
-  "generated_at": "2026-09-16T01:15:22.741958+00:00",
+  "schema_version": 4,
+  "generated_at": "2026-09-16T02:16:17.285752+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
     "auto_delete": false,
     "auto_mutate_public_records": false,
     "name_match_is_proof": false,
+    "reported_affiliation_or_orcid_is_proof": false,
     "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
     "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
     "title_similarity_threshold": 0.88,
@@ -199,6 +200,22 @@
       "identity_name_match": false,
       "matched_author": null,
       "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Center for Open Science",
+        "venue": null,
+        "work_type": "posted-content",
+        "resource_url": "https://osf.io/rvzhc_v1",
+        "metadata_links": [],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -215,6 +232,22 @@
       "identity_name_match": false,
       "matched_author": null,
       "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Center for Open Science",
+        "venue": null,
+        "work_type": "posted-content",
+        "resource_url": "https://osf.io/sargw_v1",
+        "metadata_links": [],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -231,6 +264,24 @@
       "identity_name_match": true,
       "matched_author": "Ade Agung Laksono",
       "author_similarity": 0.8108,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Pandawan",
+        "venue": "Aptisi Transactions on Technopreneurship (ATT)",
+        "work_type": "journal-article",
+        "resource_url": "https://att.aptisi.or.id/index.php/att/article/view/294",
+        "metadata_links": [
+          "https://att.aptisi.or.id/index.php/att/article/download/294/209"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -247,6 +298,24 @@
       "identity_name_match": true,
       "matched_author": "Tri Agung Hari Laksono",
       "author_similarity": 0.8095,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Asosiasi Riset dan Pengembangan Manusia Berkelanjutan (ORBIT)",
+        "venue": "Revenue Manuscript",
+        "work_type": "journal-article",
+        "resource_url": "https://orbitassociation.com/index.php/revenue/article/view/62",
+        "metadata_links": [
+          "https://orbitassociation.com/index.php/revenue/article/download/62/35"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -264,6 +333,24 @@
       "identity_name_match": true,
       "matched_author": "Agung Laksono",
       "author_similarity": 0.7879,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Institut Bisnis dan Informatika Kesatuan",
+        "venue": "Jurnal Ilmiah Akuntansi Kesatuan",
+        "work_type": "journal-article",
+        "resource_url": "http://devjurnal.ibik.ac.id/index.php/jiakes/article/view/1329",
+        "metadata_links": [
+          "http://devjurnal.ibik.ac.id/index.php/jiakes/article/download/1329/1147"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -281,6 +368,24 @@
       "identity_name_match": true,
       "matched_author": "Tomy Agung Laksono",
       "author_similarity": 0.8421,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Author(s)",
+        "venue": "AIP Conference Proceedings",
+        "work_type": "proceedings-article",
+        "resource_url": "https://pubs.aip.org/aip/acp/article/720751",
+        "metadata_links": [
+          "http://aip.scitation.org/doi/pdf/10.1063/1.5016026"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -298,6 +403,24 @@
       "identity_name_match": true,
       "matched_author": "Agung Laksono",
       "author_similarity": 0.7879,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Universitas Palembang",
+        "venue": "Jurnal Manajemen",
+        "work_type": "journal-article",
+        "resource_url": "https://jurnal.unpal.ac.id/index.php/jm/article/view/499",
+        "metadata_links": [
+          "https://jurnal.unpal.ac.id/index.php/jm/article/download/499/431"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -315,6 +438,24 @@
       "identity_name_match": true,
       "matched_author": "Agung Laksono",
       "author_similarity": 0.7879,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "LPPM Universitas Syiah Kuala",
+        "venue": "Jurnal Pendidikan Sains Indonesia",
+        "work_type": "journal-article",
+        "resource_url": "https://jurnal.unsyiah.ac.id/JPSI/article/view/24100",
+        "metadata_links": [
+          "https://jurnal.unsyiah.ac.id/JPSI/article/viewFile/24100/15778"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -332,6 +473,24 @@
       "identity_name_match": true,
       "matched_author": "Pria Agung Laksono",
       "author_similarity": 0.8947,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "LP2M Universitas Ibrahimy",
+        "venue": "Proceeding of International Conference of Religion, Health, Education, Science and Technology",
+        "work_type": "journal-article",
+        "resource_url": "https://journal.ibrahimy.ac.id/index.php/icorhestech/article/view/5697",
+        "metadata_links": [
+          "https://journal.ibrahimy.ac.id/index.php/icorhestech/article/download/5697/2432"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -349,40 +508,24 @@
       "identity_name_match": true,
       "matched_author": "Dwiaji Agung Laksono",
       "author_similarity": 0.8,
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.24076/joism.2020v1i2.443",
-      "title": "METODE MYER BRIGGS TYPE INDICATOR (MBTI) UNTUK TES KEPRIBADIAN SEBAGAI MEDIA PENGEMBANGAN DIRI",
-      "year": 2020,
-      "venue": "Journal of Information System Management (JOISM)",
-      "authors": [
-        "Wisnu Agung Laksono",
-        "Yuli Astuti"
-      ],
-      "publisher": "STMIK AMIKOM Yogyakarta",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Wisnu Agung Laksono",
-      "author_similarity": 0.8205,
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.24127/armatur.v7i2.11865",
-      "title": "Analisis Penyimpangan Fasa dan Sifat Mekanik pada Baja Paduan Hasil Pengecoran Konvensional di Bengkel Tenayan Pekanbaru",
-      "year": 2026,
-      "venue": "ARMATUR : Artikel Teknik Mesin &amp; Manufaktur",
-      "authors": [
-        "Agung Laksono Yudho",
-        "Farhan Anggriawan"
-      ],
-      "publisher": "Muhammadiyah Metro University",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "matched_author": null,
-      "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "AMO Publisher",
+        "venue": "European Journal of Applied Science, Engineering and Technology",
+        "work_type": "journal-article",
+        "resource_url": "https://ejaset.com/index.php/journal/article/view/17",
+        "metadata_links": [
+          "https://ejaset.com/index.php/journal/article/download/17/13"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -400,6 +543,24 @@
       "identity_name_match": false,
       "matched_author": null,
       "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Budapest International Research and Critics Institute",
+        "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+        "work_type": "journal-article",
+        "resource_url": "http://biarjournal.com/index.php/biolae/article/view/986",
+        "metadata_links": [
+          "http://biarjournal.com/index.php/biolae/article/download/986/942"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -417,6 +578,22 @@
       "identity_name_match": false,
       "matched_author": null,
       "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Center for Open Science",
+        "venue": null,
+        "work_type": "posted-content",
+        "resource_url": "https://osf.io/qh94p_v1",
+        "metadata_links": [],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
@@ -434,6 +611,96 @@
       "identity_name_match": true,
       "matched_author": "Didi Agung Laksono",
       "author_similarity": 0.7895,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
+        "venue": "Jurnal Logistik Bisnis",
+        "work_type": "journal-article",
+        "resource_url": "https://ejurnal.ulbi.ac.id/index.php/logistik/article/view/2814",
+        "metadata_links": [
+          "https://ejurnal.ulbi.ac.id/index.php/logistik/article/download/2814/1079"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.1016/j.cegh.2025.102201",
+      "title": "Regional disparities of TB-HIV coinfection among national health insurance members in Indonesia",
+      "year": 2025,
+      "venue": "Clinical Epidemiology and Global Health",
+      "authors": [
+        "Paisal Paisal",
+        "Agung Dwi Laksono"
+      ],
+      "publisher": "Elsevier BV",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Elsevier BV",
+        "venue": "Clinical Epidemiology and Global Health",
+        "work_type": "journal-article",
+        "resource_url": "https://linkinghub.elsevier.com/retrieve/pii/S221339842500291X",
+        "metadata_links": [
+          "https://api.elsevier.com/content/article/PII:S221339842500291X?httpAccept=text/xml",
+          "https://api.elsevier.com/content/article/PII:S221339842500291X?httpAccept=text/plain"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.37506/ijfmt.v15i3.15857",
+      "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
+      "year": 2021,
+      "venue": "Indian Journal of Forensic Medicine &amp; Toxicology",
+      "authors": [
+        "Mara Ipa",
+        "Agung Dwi Laksono"
+      ],
+      "publisher": "Institute of Medico-legal Publications Private Limited",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Institute of Medico-legal Publications Private Limited",
+        "venue": "Indian Journal of Forensic Medicine &amp; Toxicology",
+        "work_type": "journal-article",
+        "resource_url": "https://www.medicopublication.com/index.php/ijfmt/article/view/15857",
+        "metadata_links": [
+          "https://www.medicopublication.com/index.php/ijfmt/article/download/15857/14218",
+          "http://medicopublication.com/index.php/ijfmt/article/download/15857/14218"
+        ],
+        "source": "crossref"
+      },
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     }
   ],
