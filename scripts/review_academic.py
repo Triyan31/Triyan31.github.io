@@ -39,6 +39,26 @@ def save(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def persist_decision_state(decisions, pubs=None):
+    """Persist decision state without leaving a partial approval behind.
+
+    The audit history is written first. For approvals, publication state follows.
+    If the publication write fails, restore the exact prior audit file bytes so the
+    pair remains at its pre-decision state. Rejects only mutate decision history.
+    """
+    prior_decisions = DECISIONS.read_bytes() if DECISIONS.exists() else None
+    try:
+        save(DECISIONS, decisions)
+        if pubs is not None:
+            save(PUBS, pubs)
+    except Exception:
+        if prior_decisions is None:
+            DECISIONS.unlink(missing_ok=True)
+        else:
+            DECISIONS.write_bytes(prior_decisions)
+        raise
+
+
 def candidate_has_registered_name(person, candidate):
     target = normalize_name(person)
     return bool(target) and any(normalize_name(author) == target for author in candidate.get("authors") or [])
@@ -142,9 +162,8 @@ def main():
     if publication:
         pubs.setdefault("publications", []).append(publication)
         pubs["updated_at"] = datetime.now(timezone.utc).date().isoformat()
-        save(PUBS, pubs)
 
-    save(DECISIONS, decisions)
+    persist_decision_state(decisions, pubs if publication else None)
     print(f"Recorded {args.action} decision for {doi} by {actor}.")
     if publication:
         print("Candidate passed the verification gate and was added as verified.")

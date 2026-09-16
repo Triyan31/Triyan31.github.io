@@ -120,6 +120,29 @@ class AcademicDecisionE2EIntegrityTests(unittest.TestCase):
         self.assertEqual(history[0]["decided_by"], "Triyan31")
         self.assertEqual(history[0]["machine_verification"]["status"], "verified")
 
+    def test_approval_publication_write_failure_rolls_back_audit_history(self):
+        verification = {
+            "recommended_status": "verified",
+            "reason": "Verified in isolated failure fixture.",
+            "evidence": [{"source": "fixture_registry"}],
+        }
+        before_decisions = self.decisions_path.read_bytes()
+        before_pubs = self.pubs_path.read_bytes()
+        real_save = review.save
+
+        def fail_publication_write(path, value):
+            if path == self.pubs_path:
+                raise OSError("simulated publication persistence failure")
+            return real_save(path, value)
+
+        with patch.object(review, "verify_publication", return_value=verification), \
+             patch.object(review, "save", side_effect=fail_publication_write):
+            with self.assertRaises(OSError):
+                self._run("approve", evidence_url="https://doi.org/10.1234/example")
+
+        self.assertEqual(self.decisions_path.read_bytes(), before_decisions)
+        self.assertEqual(self.pubs_path.read_bytes(), before_pubs)
+
 
 if __name__ == "__main__":
     unittest.main()
