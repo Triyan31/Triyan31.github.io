@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T02:23:32.328356+00:00",
+  "updated_at": "2026-09-16T02:25:44.014211+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -25,6 +25,15 @@
       "decision": "reject",
       "decided_at": "2026-09-16T02:23:32.328356+00:00",
       "title": "Mendekatkan Pelayanan Kesehatan  yang Berkualitas pada Masyarakat",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.31227/osf.io/sargw",
+      "decision": "reject",
+      "decided_at": "2026-09-16T02:25:44.014211+00:00",
+      "title": "Mengarusutamakan Kebudayaan  di Bidang Kesehatan",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
