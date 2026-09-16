@@ -1,14 +1,16 @@
 {
-  "schema_version": 4,
-  "generated_at": "2026-09-16T02:45:51.912571+00:00",
+  "schema_version": 5,
+  "generated_at": "2026-09-16T07:56:34.963083+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
     "auto_delete": false,
     "auto_mutate_public_records": false,
     "name_match_is_proof": false,
+    "fuzzy_name_match_is_discovery_only": true,
+    "machine_author_identity_requires_exact_registered_name": true,
     "reported_affiliation_or_orcid_is_proof": false,
-    "machine_verified_rule": "DOI + normalized title + author identity + publication year must match primary bibliographic metadata.",
+    "machine_verified_rule": "DOI + normalized title + exact registered author identity + publication year must match primary bibliographic metadata.",
     "manual_verified_rule": "DOI-less or incomplete-metadata works require direct publisher/manual evidence.",
     "title_similarity_threshold": 0.88,
     "review_required_for_mismatch": true,
@@ -19,8 +21,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 11,
-    "suppressed_rejections": 6
+    "discovered_needs_review": 10,
+    "suppressed_rejections": 7
   },
   "publication_verification": [
     {
@@ -35,6 +37,7 @@
           "title_match": true,
           "title_similarity": 1.0,
           "author_match": true,
+          "author_match_policy": "exact_registered_name",
           "matched_author": "Triyan Agung Laksono",
           "author_similarity": 1.0,
           "year_match": true,
@@ -54,6 +57,7 @@
           "title_match": true,
           "title_similarity": 1.0,
           "author_match": true,
+          "author_match_policy": "exact_registered_name",
           "matched_author": "Triyan Agung Laksono",
           "author_similarity": 1.0,
           "year_match": true,
@@ -69,7 +73,7 @@
         }
       ],
       "recommended_status": "verified",
-      "reason": "DOI, title, author identity, and year match the primary bibliographic source.",
+      "reason": "DOI, title, exact registered author identity, and year match the primary bibliographic source.",
       "status_changed": false
     },
     {
@@ -84,6 +88,7 @@
           "title_match": true,
           "title_similarity": 1.0,
           "author_match": true,
+          "author_match_policy": "exact_registered_name",
           "matched_author": "Triyan Agung Laksono",
           "author_similarity": 1.0,
           "year_match": true,
@@ -100,6 +105,7 @@
           "title_match": true,
           "title_similarity": 1.0,
           "author_match": true,
+          "author_match_policy": "exact_registered_name",
           "matched_author": "Triyan Agung Laksono",
           "author_similarity": 1.0,
           "year_match": true,
@@ -112,7 +118,7 @@
         }
       ],
       "recommended_status": "verified",
-      "reason": "DOI, title, author identity, and year match the primary bibliographic source.",
+      "reason": "DOI, title, exact registered author identity, and year match the primary bibliographic source.",
       "status_changed": false
     },
     {
@@ -127,6 +133,7 @@
           "title_match": true,
           "title_similarity": 1.0,
           "author_match": true,
+          "author_match_policy": "exact_registered_name",
           "matched_author": "Triyan Agung Laksono",
           "author_similarity": 1.0,
           "year_match": true,
@@ -147,6 +154,7 @@
           "title_match": true,
           "title_similarity": 1.0,
           "author_match": true,
+          "author_match_policy": "exact_registered_name",
           "matched_author": "Triyan Agung Laksono",
           "author_similarity": 1.0,
           "year_match": true,
@@ -163,7 +171,7 @@
         }
       ],
       "recommended_status": "verified",
-      "reason": "DOI, title, author identity, and year match the primary bibliographic source.",
+      "reason": "DOI, title, exact registered author identity, and year match the primary bibliographic source.",
       "status_changed": false
     },
     {
@@ -187,41 +195,6 @@
   ],
   "discovered_candidates": [
     {
-      "doi": "10.37641/jiakes.v10i2.1329",
-      "title": "Pengaruh Sosialisasisi Perpajakan dan Sanksi Pajak terhadap Kepatuhan Wajib Pajak Orang Pribadi di KPP Pratama Metro",
-      "year": 2022,
-      "venue": "Jurnal Ilmiah Akuntansi Kesatuan",
-      "authors": [
-        "Agung Laksono",
-        "Syamsu Rizal"
-      ],
-      "publisher": "Institut Bisnis dan Informatika Kesatuan",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Agung Laksono",
-      "author_similarity": 0.7879,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Institut Bisnis dan Informatika Kesatuan",
-        "venue": "Jurnal Ilmiah Akuntansi Kesatuan",
-        "work_type": "journal-article",
-        "resource_url": "http://devjurnal.ibik.ac.id/index.php/jiakes/article/view/1329",
-        "metadata_links": [
-          "http://devjurnal.ibik.ac.id/index.php/jiakes/article/download/1329/1147"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
       "doi": "10.1063/1.5016026",
       "title": "Validation method for determination of cholesterol in human urine with electrochemical sensors using gold electrodes",
       "year": 2017,
@@ -233,7 +206,8 @@
       "publisher": "Author(s)",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "identity_name_match": true,
+      "identity_name_match": false,
+      "discovery_name_signal": true,
       "matched_author": "Tomy Agung Laksono",
       "author_similarity": 0.8421,
       "identity_evidence": {
@@ -254,7 +228,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.36546/jm.v9i4.499",
@@ -268,7 +242,8 @@
       "publisher": "Universitas Palembang",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "identity_name_match": true,
+      "identity_name_match": false,
+      "discovery_name_signal": true,
       "matched_author": "Agung Laksono",
       "author_similarity": 0.7879,
       "identity_evidence": {
@@ -289,7 +264,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.24815/jpsi.v10i3.24100",
@@ -303,7 +278,8 @@
       "publisher": "LPPM Universitas Syiah Kuala",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "identity_name_match": true,
+      "identity_name_match": false,
+      "discovery_name_signal": true,
       "matched_author": "Agung Laksono",
       "author_similarity": 0.7879,
       "identity_evidence": {
@@ -324,7 +300,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.35316/icorhestech.v1i1.5697",
@@ -338,7 +314,8 @@
       "publisher": "LP2M Universitas Ibrahimy",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "identity_name_match": true,
+      "identity_name_match": false,
+      "discovery_name_signal": true,
       "matched_author": "Pria Agung Laksono",
       "author_similarity": 0.8947,
       "identity_evidence": {
@@ -359,42 +336,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.33258/biolae.v5i2.986",
-      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
-      "year": 2023,
-      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
-      "authors": [
-        "Agung Tri Laksono",
-        "Else Liliani"
-      ],
-      "publisher": "Budapest International Research and Critics Institute",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "matched_author": null,
-      "author_similarity": 0.0,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Budapest International Research and Critics Institute",
-        "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
-        "work_type": "journal-article",
-        "resource_url": "http://biarjournal.com/index.php/biolae/article/view/986",
-        "metadata_links": [
-          "http://biarjournal.com/index.php/biolae/article/download/986/942"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.1016/j.cegh.2025.102201",
@@ -409,6 +351,7 @@
       "source": "crossref-name-discovery",
       "verification": "needs_review",
       "identity_name_match": false,
+      "discovery_name_signal": false,
       "matched_author": null,
       "author_similarity": 0.0,
       "identity_evidence": {
@@ -430,7 +373,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.24076/joism.2020v1i2.443",
@@ -444,7 +387,8 @@
       "publisher": "STMIK AMIKOM Yogyakarta",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "identity_name_match": true,
+      "identity_name_match": false,
+      "discovery_name_signal": true,
       "matched_author": "Wisnu Agung Laksono",
       "author_similarity": 0.8205,
       "identity_evidence": {
@@ -465,7 +409,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.24127/armatur.v7i2.11865",
@@ -480,6 +424,7 @@
       "source": "crossref-name-discovery",
       "verification": "needs_review",
       "identity_name_match": false,
+      "discovery_name_signal": false,
       "matched_author": null,
       "author_similarity": 0.0,
       "identity_evidence": {
@@ -500,7 +445,43 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.33258/biolae.v5i2.986",
+      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
+      "year": 2023,
+      "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+      "authors": [
+        "Agung Tri Laksono",
+        "Else Liliani"
+      ],
+      "publisher": "Budapest International Research and Critics Institute",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "discovery_name_signal": false,
+      "matched_author": null,
+      "author_similarity": 0.0,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "Budapest International Research and Critics Institute",
+        "venue": "Britain International of Linguistics Arts and Education (BIoLAE) Journal",
+        "work_type": "journal-article",
+        "resource_url": "http://biarjournal.com/index.php/biolae/article/view/986",
+        "metadata_links": [
+          "http://biarjournal.com/index.php/biolae/article/download/986/942"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.31227/osf.io/qh94p",
@@ -515,6 +496,7 @@
       "source": "crossref-name-discovery",
       "verification": "needs_review",
       "identity_name_match": false,
+      "discovery_name_signal": false,
       "matched_author": null,
       "author_similarity": 0.0,
       "identity_evidence": {
@@ -533,7 +515,7 @@
         "metadata_links": [],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
       "doi": "10.46369/logistik.v12i2.2814",
@@ -547,7 +529,8 @@
       "publisher": "Jurnal Logistik Bisnis Politeknik Pos Indonesia",
       "source": "crossref-name-discovery",
       "verification": "needs_review",
-      "identity_name_match": true,
+      "identity_name_match": false,
+      "discovery_name_signal": true,
       "matched_author": "Didi Agung Laksono",
       "author_similarity": 0.7895,
       "identity_evidence": {
@@ -568,7 +551,7 @@
         ],
         "source": "crossref"
       },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     }
   ],
   "suppressed_candidates": [
@@ -576,37 +559,50 @@
       "doi": "10.33795/jip.v9i1.1155",
       "title": "DESAIN ARSITEKTUR ENTERPRISE SISTEM PEMERITAHAN BERBASIS ELEKTRONIK BIDANG KESEHATAN",
       "decision": "reject",
-      "decided_at": "2026-09-16T01:13:33.275595+00:00"
+      "decided_at": "2026-09-16T01:13:33.275595+00:00",
+      "decided_by": null
     },
     {
       "doi": "10.64628/aan.vjxq6jv6a",
       "title": "Riset: suami di perkotaan lebih banyak terlibat dalam pemeriksaan kehamilan istri dibanding suami di pedesaan",
       "decision": "reject",
-      "decided_at": "2026-09-16T01:15:19.714585+00:00"
+      "decided_at": "2026-09-16T01:15:19.714585+00:00",
+      "decided_by": null
     },
     {
       "doi": "10.31227/osf.io/rvzhc",
       "title": "Mendekatkan Pelayanan Kesehatan  yang Berkualitas pada Masyarakat",
       "decision": "reject",
-      "decided_at": "2026-09-16T02:23:32.328356+00:00"
+      "decided_at": "2026-09-16T02:23:32.328356+00:00",
+      "decided_by": null
     },
     {
       "doi": "10.31227/osf.io/sargw",
       "title": "Mengarusutamakan Kebudayaan  di Bidang Kesehatan",
       "decision": "reject",
-      "decided_at": "2026-09-16T02:25:44.014211+00:00"
+      "decided_at": "2026-09-16T02:25:44.014211+00:00",
+      "decided_by": null
     },
     {
       "doi": "10.34306/att.v5i2.294",
       "title": "The Impact Learning Organization and Organization Culture To Employee Performance, Mediated By Knowledge Sharing (Empirical Study On Bumitama Agri LTD.)",
       "decision": "reject",
-      "decided_at": "2026-09-16T02:29:40.904696+00:00"
+      "decided_at": "2026-09-16T02:29:40.904696+00:00",
+      "decided_by": null
     },
     {
       "doi": "10.63068/revenue.v2i2.62",
       "title": "Kualitas Pelayanan dan Fasilitas Kendaraan Rental Terhadap Kepuasan Pelanggan di Kota Pasuruan",
       "decision": "reject",
-      "decided_at": "2026-09-16T02:45:48.880343+00:00"
+      "decided_at": "2026-09-16T02:45:48.880343+00:00",
+      "decided_by": null
+    },
+    {
+      "doi": "10.37641/jiakes.v10i2.1329",
+      "title": "Pengaruh Sosialisasisi Perpajakan dan Sanksi Pajak terhadap Kepatuhan Wajib Pajak Orang Pribadi di KPP Pratama Metro",
+      "decision": "reject",
+      "decided_at": "2026-09-16T07:56:30.310324+00:00",
+      "decided_by": "Triyan31"
     }
   ]
 }
