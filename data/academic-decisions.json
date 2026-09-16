@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T08:22:15.144401+00:00",
+  "updated_at": "2026-09-16T08:23:25.293592+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -152,6 +152,16 @@
       "decided_at": "2026-09-16T08:22:15.144401+00:00",
       "decided_by": "Triyan31",
       "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.33258/biolae.v5i2.986",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:23:25.293592+00:00",
+      "decided_by": "Triyan31",
+      "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
