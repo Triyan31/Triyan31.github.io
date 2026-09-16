@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-09-16T02:34:22.767559+00:00",
+  "generated_at": "2026-09-16T02:45:51.912571+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -19,8 +19,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 12,
-    "suppressed_rejections": 5
+    "discovered_needs_review": 11,
+    "suppressed_rejections": 6
   },
   "publication_verification": [
     {
@@ -186,40 +186,6 @@
     }
   ],
   "discovered_candidates": [
-    {
-      "doi": "10.63068/revenue.v2i2.62",
-      "title": "Kualitas Pelayanan dan Fasilitas Kendaraan Rental Terhadap Kepuasan Pelanggan di Kota Pasuruan",
-      "year": 2024,
-      "venue": "Revenue Manuscript",
-      "authors": [
-        "Tri Agung Hari Laksono"
-      ],
-      "publisher": "Asosiasi Riset dan Pengembangan Manusia Berkelanjutan (ORBIT)",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Tri Agung Hari Laksono",
-      "author_similarity": 0.8095,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Asosiasi Riset dan Pengembangan Manusia Berkelanjutan (ORBIT)",
-        "venue": "Revenue Manuscript",
-        "work_type": "journal-article",
-        "resource_url": "https://orbitassociation.com/index.php/revenue/article/view/62",
-        "metadata_links": [
-          "https://orbitassociation.com/index.php/revenue/article/download/62/35"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
     {
       "doi": "10.37641/jiakes.v10i2.1329",
       "title": "Pengaruh Sosialisasisi Perpajakan dan Sanksi Pajak terhadap Kepatuhan Wajib Pajak Orang Pribadi di KPP Pratama Metro",
@@ -635,6 +601,12 @@
       "title": "The Impact Learning Organization and Organization Culture To Employee Performance, Mediated By Knowledge Sharing (Empirical Study On Bumitama Agri LTD.)",
       "decision": "reject",
       "decided_at": "2026-09-16T02:29:40.904696+00:00"
+    },
+    {
+      "doi": "10.63068/revenue.v2i2.62",
+      "title": "Kualitas Pelayanan dan Fasilitas Kendaraan Rental Terhadap Kepuasan Pelanggan di Kota Pasuruan",
+      "decision": "reject",
+      "decided_at": "2026-09-16T02:45:48.880343+00:00"
     }
   ]
 }

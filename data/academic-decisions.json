@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-16T02:29:40.904696+00:00",
+  "updated_at": "2026-09-16T02:45:48.880343+00:00",
   "decisions": [
     {
       "doi": "10.33795/jip.v9i1.1155",
@@ -43,6 +43,15 @@
       "decision": "reject",
       "decided_at": "2026-09-16T02:29:40.904696+00:00",
       "title": "The Impact Learning Organization and Organization Culture To Employee Performance, Mediated By Knowledge Sharing (Empirical Study On Bumitama Agri LTD.)",
+      "source": "crossref-name-discovery",
+      "evidence_url": null,
+      "note": ""
+    },
+    {
+      "doi": "10.63068/revenue.v2i2.62",
+      "decision": "reject",
+      "decided_at": "2026-09-16T02:45:48.880343+00:00",
+      "title": "Kualitas Pelayanan dan Fasilitas Kendaraan Rental Terhadap Kepuasan Pelanggan di Kota Pasuruan",
       "source": "crossref-name-discovery",
       "evidence_url": null,
       "note": ""
