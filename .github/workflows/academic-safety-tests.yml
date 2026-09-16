@@ -9,10 +9,15 @@ on:
       - 'data/academic-decisions.json'
       - 'data/publications.json'
       - 'data/academic-review.json'
+      - 'data/teaching.json'
       - 'review.html'
       - 'review.js'
       - 'review-integrity.js'
       - 'review.css'
+      - 'teaching.html'
+      - 'teaching.js'
+      - 'course.html'
+      - 'course.js'
       - '.github/workflows/academic-review-decision.yml'
       - '.github/workflows/academic-safety-tests.yml'
   push:
@@ -24,10 +29,15 @@ on:
       - 'data/academic-decisions.json'
       - 'data/publications.json'
       - 'data/academic-review.json'
+      - 'data/teaching.json'
       - 'review.html'
       - 'review.js'
       - 'review-integrity.js'
       - 'review.css'
+      - 'teaching.html'
+      - 'teaching.js'
+      - 'course.html'
+      - 'course.js'
       - '.github/workflows/academic-review-decision.yml'
       - '.github/workflows/academic-safety-tests.yml'
   workflow_dispatch:
@@ -59,3 +69,4 @@ jobs:
           python -m json.tool data/publications.json >/dev/null
           python -m json.tool data/academic-decisions.json >/dev/null
           python -m json.tool data/academic-review.json >/dev/null
+          python -m json.tool data/teaching.json >/dev/null

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teaching Hub course page by Triyan Agung Laksono." />
+  <meta name="theme-color" content="#07111f" />
+  <title>Course — Teaching Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div id="spotlight" class="spotlight"></div>
+  <header class="nav-wrap"><nav class="nav shell" aria-label="Primary navigation">
+    <a class="brand" href="./index.html"><span class="brand-mark">TL</span><span>Triyan Agung Laksono</span></a>
+    <div class="nav-links"><a href="./index.html#work">Projects</a><a href="./index.html#research">Research</a><a href="./teaching.html" aria-current="page">Teaching</a></div>
+    <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle light/dark theme">◐</button>
+  </nav></header>
+
+  <main id="coursePage" hidden>
+    <section class="hero shell teaching-hub-hero">
+      <div class="hero-copy reveal visible">
+        <div class="eyebrow"><span class="pulse"></span><span id="courseType"></span></div>
+        <h1 id="courseTitle"></h1>
+        <p id="courseDescription" class="lead"></p>
+        <div class="hero-actions"><a class="btn primary" href="#learning-space">Explore learning space <span>↘</span></a><a class="btn ghost" href="./teaching.html">All courses</a></div>
+      </div>
+      <div class="hero-visual reveal visible" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="core"><span>LEARN</span><strong>×</strong><span>APPLY</span></div><div class="float-tag tag-a">Outcomes</div><div class="float-tag tag-b">Meetings</div><div class="float-tag tag-c">Evidence</div></div>
+    </section>
+
+    <section id="learning-space" class="section shell">
+      <div class="section-index reveal visible"><span>01</span><span>COURSE SPACE</span></div>
+      <div class="section-head reveal visible"><h2>Course learning space.</h2><p id="courseStatusText">The reusable course shell is ready. Verified course outcomes, meeting plans, public materials, assessments, and references will appear here when an approved course content file is published.</p></div>
+      <div class="pillars">
+        <article class="pillar reveal visible"><div class="pillar-icon">01</div><span class="num">OUTCOMES</span><h3>Learning outcomes</h3><p>Intended learning will be shown here only when backed by approved course documentation.</p></article>
+        <article class="pillar reveal visible"><div class="pillar-icon">02</div><span class="num">MEETINGS</span><h3>Meeting plan</h3><p>Topics, activities, and public learning resources will be organized by meeting.</p></article>
+        <article class="pillar reveal visible"><div class="pillar-icon">03</div><span class="num">ASSESSMENT</span><h3>Assessment map</h3><p>Public assessment descriptions can be linked to outcomes without exposing student submissions or grades.</p></article>
+        <article class="pillar reveal visible"><div class="pillar-icon">04</div><span class="num">REFERENCES</span><h3>Learning references</h3><p>Books, articles, standards, and other approved references can be collected in one course context.</p></article>
+      </div>
+    </section>
+
+    <section class="section shell"><div class="privacy-note reveal visible"><span>◉</span><p><strong>Public course boundary.</strong> This page is a public learning resource. Enrolment, attendance, quizzes, submissions, grades, feedback tied to a student, and other authenticated learning activity remain in the institutional Moodle LMS.</p></div></section>
+  </main>
+
+  <main id="courseError" class="section shell" hidden>
+    <div class="privacy-note teaching-error"><span>◉</span><p><strong>Course unavailable.</strong> This course could not be resolved safely from the published Teaching Hub catalogue. Return to the <a href="./teaching.html">course catalogue</a>.</p></div>
+  </main>
+
+  <footer class="footer shell"><div><div class="brand footer-brand"><span class="brand-mark">TL</span><span>Triyan Agung Laksono</span></div><p>Academic × Technology × Research × Product</p></div><div class="footer-links"><a href="./teaching.html">Teaching Hub</a><a href="./index.html">Portfolio</a></div></footer>
+  <script src="./script.js"></script>
+  <script src="./course.js"></script>
+</body></html>
