@@ -1,8 +1,13 @@
 import importlib.util
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / "scripts" / "review_academic.py"
+SCRIPTS = ROOT / "scripts"
+SCRIPT = SCRIPTS / "review_academic.py"
+# review_academic is normally executed from scripts/, where sync_academic is
+# importable as a sibling module. Reproduce that runtime import path in tests.
+sys.path.insert(0, str(SCRIPTS))
 spec = importlib.util.spec_from_file_location("review_academic", SCRIPT)
 review = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(review)
