@@ -6,7 +6,12 @@
   const type = document.getElementById('courseType');
   const title = document.getElementById('courseTitle');
   const description = document.getElementById('courseDescription');
-  if (!page || !error || !type || !title || !description) return;
+  const profile = document.getElementById('courseProfile');
+  const pending = document.getElementById('courseProfilePending');
+  const focus = document.getElementById('courseFocus');
+  const approach = document.getElementById('courseApproach');
+  const tools = document.getElementById('courseTools');
+  if (!page || !error || !type || !title || !description || !profile || !pending || !focus || !approach || !tools) return;
 
   const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const params = new URLSearchParams(window.location.search);
@@ -18,6 +23,14 @@
     document.title = 'Course unavailable — Teaching Hub';
   };
 
+  const validStringList = (value) => Array.isArray(value) && value.length > 0 &&
+    value.every((item) => typeof item === 'string' && item.trim() !== '');
+
+  const validProfile = (value) => value && typeof value === 'object' &&
+    validStringList(value.focus_areas) &&
+    validStringList(value.teaching_approach) &&
+    validStringList(value.tools);
+
   const validPublishedCourse = (course) => course &&
     typeof course === 'object' &&
     course.published === true &&
@@ -25,7 +38,19 @@
     typeof course.id === 'string' && slugPattern.test(course.id) &&
     typeof course.type === 'string' && course.type.trim() !== '' &&
     typeof course.title === 'string' && course.title.trim() !== '' &&
-    typeof course.description === 'string' && course.description.trim() !== '';
+    typeof course.description === 'string' && course.description.trim() !== '' &&
+    (course.profile === undefined || validProfile(course.profile));
+
+  const renderList = (target, items) => {
+    const list = document.createElement('ul');
+    list.className = 'course-profile-list';
+    items.forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      list.append(li);
+    });
+    target.replaceChildren(list);
+  };
 
   if (!requestedId || !slugPattern.test(requestedId)) {
     failClosed();
@@ -52,6 +77,18 @@
       title.textContent = course.title;
       description.textContent = course.description;
       document.title = `${course.title} — Teaching Hub`;
+
+      if (course.profile) {
+        renderList(focus, course.profile.focus_areas);
+        renderList(approach, course.profile.teaching_approach);
+        renderList(tools, course.profile.tools);
+        pending.hidden = true;
+        profile.hidden = false;
+      } else {
+        profile.hidden = true;
+        pending.hidden = false;
+      }
+
       error.hidden = true;
       page.hidden = false;
     })
