@@ -108,5 +108,35 @@ class AcademicEvidenceEnrichmentTests(unittest.TestCase):
         self.assertIsNone(sync_academic.normalized_orcid(None))
 
 
+class AcademicNormalizationEquivalenceTests(unittest.TestCase):
+    def test_name_normalizers_are_behaviorally_equivalent_for_supported_inputs(self):
+        cases = [
+            None,
+            "",
+            "Triyan Agung Laksono",
+            "  TRIYAN   AGUNG LAKSONO  ",
+            "Tríyan Agung Laksono",
+            "Triyan-Agung.Laksono",
+            "A. B. Author",
+            "Author 123",
+        ]
+        for value in cases:
+            with self.subTest(value=value):
+                self.assertEqual(review_academic.normalize_name(value), sync_academic.normalize(value))
+
+    def test_doi_normalizers_are_behaviorally_equivalent_for_supported_inputs(self):
+        cases = [
+            None,
+            "",
+            "10.1234/ABC",
+            " https://doi.org/10.1234/ABC ",
+            "http://doi.org/10.1234/ABC",
+            "doi:10.1234/ABC",
+        ]
+        for value in cases:
+            with self.subTest(value=value):
+                self.assertEqual(review_academic.doi_norm(value), sync_academic.normalized_doi(value))
+
+
 if __name__ == "__main__":
     unittest.main()
