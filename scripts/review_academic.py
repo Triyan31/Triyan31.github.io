@@ -4,7 +4,8 @@
 Reject decisions suppress recurring false positives. Approvals require explicit
 source evidence, an exact registered author-name match in the candidate metadata,
 and the DOI/title/author/year machine gate before a record can enter the public
-verified registry.
+verified registry. Every persisted decision records the authenticated actor supplied
+by the trusted workflow boundary.
 """
 from __future__ import annotations
 
@@ -52,6 +53,26 @@ def find_candidate(report, doi):
     raise SystemExit(f"Candidate DOI not found in current review queue: {target}")
 
 
+def normalize_actor(value):
+    actor = (value or "").strip()
+    if not actor or not re.fullmatch(r"[A-Za-z0-9-]{1,39}", actor):
+        raise SystemExit("Decision actor is missing or invalid; authenticated decisions are fail-closed.")
+    return actor
+
+
+def build_decision(candidate, doi, action, actor, now, evidence_url=None, note=""):
+    return {
+        "doi": doi,
+        "decision": action,
+        "decided_at": now,
+        "decided_by": normalize_actor(actor),
+        "title": candidate.get("title"),
+        "source": candidate.get("source"),
+        "evidence_url": evidence_url,
+        "note": note,
+    }
+
+
 def slug(text):
     value = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
     return value[:80] or "publication"
@@ -61,9 +82,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("action", choices=("approve", "reject"))
     parser.add_argument("--doi", required=True)
+    parser.add_argument("--actor", required=True, help="Authenticated GitHub actor performing the decision")
     parser.add_argument("--evidence-url")
     parser.add_argument("--note", default="")
     args = parser.parse_args()
+    actor = normalize_actor(args.actor)
 
     report = load(REVIEW, {})
     pubs = load(PUBS, {"publications": []})
@@ -107,15 +130,7 @@ def main():
         publication["verification_sources"] = list(dict.fromkeys(publication["verification_sources"] + machine_sources))
 
     decisions["decisions"] = [d for d in decisions.get("decisions", []) if doi_norm(d.get("doi")) != doi]
-    decision = {
-        "doi": doi,
-        "decision": args.action,
-        "decided_at": now,
-        "title": candidate.get("title"),
-        "source": candidate.get("source"),
-        "evidence_url": args.evidence_url,
-        "note": args.note,
-    }
+    decision = build_decision(candidate, doi, args.action, actor, now, args.evidence_url, args.note)
     if verification_result:
         decision["machine_verification"] = {
             "status": verification_result.get("recommended_status"),
@@ -131,7 +146,7 @@ def main():
         save(PUBS, pubs)
 
     save(DECISIONS, decisions)
-    print(f"Recorded {args.action} decision for {doi}.")
+    print(f"Recorded {args.action} decision for {doi} by {actor}.")
     if publication:
         print("Candidate passed the verification gate and was added as verified.")
 
