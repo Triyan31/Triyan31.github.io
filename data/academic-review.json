@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-09-16T02:25:46.513155+00:00",
+  "generated_at": "2026-09-16T02:29:44.152491+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -19,8 +19,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 13,
-    "suppressed_rejections": 4
+    "discovered_needs_review": 12,
+    "suppressed_rejections": 5
   },
   "publication_verification": [
     {
@@ -186,40 +186,6 @@
     }
   ],
   "discovered_candidates": [
-    {
-      "doi": "10.34306/att.v5i2.294",
-      "title": "The Impact Learning Organization and Organization Culture To Employee Performance, Mediated By Knowledge Sharing (Empirical Study On Bumitama Agri LTD.)",
-      "year": 2023,
-      "venue": "Aptisi Transactions on Technopreneurship (ATT)",
-      "authors": [
-        "Ade Agung Laksono"
-      ],
-      "publisher": "Pandawan",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Ade Agung Laksono",
-      "author_similarity": 0.8108,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Pandawan",
-        "venue": "Aptisi Transactions on Technopreneurship (ATT)",
-        "work_type": "journal-article",
-        "resource_url": "https://att.aptisi.or.id/index.php/att/article/view/294",
-        "metadata_links": [
-          "https://att.aptisi.or.id/index.php/att/article/download/294/209"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
     {
       "doi": "10.63068/revenue.v2i2.62",
       "title": "Kualitas Pelayanan dan Fasilitas Kendaraan Rental Terhadap Kepuasan Pelanggan di Kota Pasuruan",
@@ -430,6 +396,41 @@
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
+      "doi": "10.59324/ejaset.2024.2(2).03",
+      "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
+      "year": 2024,
+      "venue": "European Journal of Applied Science, Engineering and Technology",
+      "authors": [
+        "Dwiaji Agung Laksono",
+        "Ganis Lukmandaru"
+      ],
+      "publisher": "AMO Publisher",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": true,
+      "matched_author": "Dwiaji Agung Laksono",
+      "author_similarity": 0.8,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "AMO Publisher",
+        "venue": "European Journal of Applied Science, Engineering and Technology",
+        "work_type": "journal-article",
+        "resource_url": "https://ejaset.com/index.php/journal/article/view/17",
+        "metadata_links": [
+          "https://ejaset.com/index.php/journal/article/download/17/13"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
       "doi": "10.33258/biolae.v5i2.986",
       "title": "Cultural Value and Locality in the Merapi Daily Short Story Collection “Lintang Johar Cikal Bakal Mataram Islam”",
       "year": 2023,
@@ -569,41 +570,6 @@
       "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     },
     {
-      "doi": "10.59324/ejaset.2024.2(2).03",
-      "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
-      "year": 2024,
-      "venue": "European Journal of Applied Science, Engineering and Technology",
-      "authors": [
-        "Dwiaji Agung Laksono",
-        "Ganis Lukmandaru"
-      ],
-      "publisher": "AMO Publisher",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": true,
-      "matched_author": "Dwiaji Agung Laksono",
-      "author_similarity": 0.8,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "AMO Publisher",
-        "venue": "European Journal of Applied Science, Engineering and Technology",
-        "work_type": "journal-article",
-        "resource_url": "https://ejaset.com/index.php/journal/article/view/17",
-        "metadata_links": [
-          "https://ejaset.com/index.php/journal/article/download/17/13"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
       "doi": "10.37506/ijfmt.v15i3.15857",
       "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
       "year": 2021,
@@ -664,6 +630,12 @@
       "title": "Mengarusutamakan Kebudayaan  di Bidang Kesehatan",
       "decision": "reject",
       "decided_at": "2026-09-16T02:25:44.014211+00:00"
+    },
+    {
+      "doi": "10.34306/att.v5i2.294",
+      "title": "The Impact Learning Organization and Organization Culture To Employee Performance, Mediated By Knowledge Sharing (Empirical Study On Bumitama Agri LTD.)",
+      "decision": "reject",
+      "decided_at": "2026-09-16T02:29:40.904696+00:00"
     }
   ]
 }
