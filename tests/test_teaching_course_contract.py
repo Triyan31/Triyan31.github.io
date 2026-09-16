@@ -26,6 +26,19 @@ class TeachingCourseContractTests(unittest.TestCase):
             self.assertTrue(course.get("title", "").strip())
             self.assertTrue(course.get("description", "").strip())
 
+    def test_business_intelligence_has_public_profile_only(self):
+        data = json.loads(TEACHING.read_text(encoding="utf-8"))
+        bi = next(course for course in data["courses"] if course["id"] == "business-intelligence")
+        profile = bi.get("profile")
+        self.assertIsInstance(profile, dict)
+        for key in ("focus_areas", "teaching_approach", "tools"):
+            self.assertIsInstance(profile.get(key), list)
+            self.assertTrue(profile[key])
+            self.assertTrue(all(isinstance(item, str) and item.strip() for item in profile[key]))
+        serialized = json.dumps(bi).lower()
+        for forbidden in ("rps", "cpmk", "sub-cpmk", "grade", "attendance", "submission"):
+            self.assertNotIn(forbidden, serialized)
+
     def test_catalogue_links_to_reusable_course_route(self):
         source = TEACHING_JS.read_text(encoding="utf-8")
         self.assertIn("./course.html?id=", source)
@@ -41,11 +54,21 @@ class TeachingCourseContractTests(unittest.TestCase):
         self.assertIn("course.published === true", source)
         self.assertIn("item.id === requestedId", source)
 
+    def test_course_page_is_portfolio_not_lms_or_rps_repository(self):
+        html = COURSE_HTML.read_text(encoding="utf-8")
+        self.assertIn("What I teach and how I approach it.", html)
+        self.assertIn("not a replacement for Moodle", html)
+        self.assertIn("RPS documents", html)
+        self.assertNotIn("Learning outcomes", html)
+        self.assertNotIn("Meeting plan", html)
+        self.assertNotIn("Assessment map", html)
+
     def test_dynamic_catalogue_content_uses_text_content(self):
         source = COURSE_JS.read_text(encoding="utf-8")
         self.assertIn("type.textContent = course.type", source)
         self.assertIn("title.textContent = course.title", source)
         self.assertIn("description.textContent = course.description", source)
+        self.assertIn("li.textContent = item", source)
         self.assertNotIn("innerHTML", source)
 
 
