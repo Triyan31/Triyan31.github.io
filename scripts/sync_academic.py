@@ -74,6 +74,20 @@ def normalized_doi(value):
     return value.strip()
 
 
+def latest_decisions_by_doi(decision_records):
+    """Return the latest appended decision for each DOI.
+
+    academic-decisions.json is an append-only audit log. Current sync behavior must
+    therefore derive state from the last record for a DOI without mutating history.
+    """
+    latest = {}
+    for record in decision_records or []:
+        doi = normalized_doi(record.get("doi"))
+        if doi:
+            latest[doi] = record
+    return latest
+
+
 def normalized_orcid(value):
     value = (value or "").strip()
     for prefix in ("https://orcid.org/", "http://orcid.org/"):
@@ -206,7 +220,7 @@ def main():
     pubs = load(PUBS)
     identity = load(IDENTITY)
     decisions_doc = load(DECISIONS, {"decisions": []})
-    decisions = {normalized_doi(d.get("doi")): d for d in decisions_doc.get("decisions", []) if d.get("doi")}
+    decisions = latest_decisions_by_doi(decisions_doc.get("decisions", []))
     person = identity["person"]["name"]
     records = pubs.get("publications", [])
     existing = {normalized_doi(p.get("doi")) for p in records if p.get("doi")}
@@ -220,7 +234,7 @@ def main():
                 continue
             prior = decisions.get(doi)
             if prior and prior.get("decision") == "reject":
-                suppressed.append({"doi": doi, "title": crossref_title(item), "decision": "reject", "decided_at": prior.get("decided_at")})
+                suppressed.append({"doi": doi, "title": crossref_title(item), "decision": "reject", "decided_at": prior.get("decided_at"), "decided_by": prior.get("decided_by")})
                 continue
             authors = crossref_author_names(item)
             discovery_match, matched_author, author_score = person_matches(person, authors)
