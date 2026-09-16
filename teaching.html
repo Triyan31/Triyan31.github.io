@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Teaching Hub — public course catalogue, learning outcomes, meeting plans, materials, assessments, and references by Triyan Agung Laksono." />
+  <meta name="theme-color" content="#07111f" />
+  <title>Teaching Hub — Triyan Agung Laksono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div id="spotlight" class="spotlight"></div>
+  <header class="nav-wrap"><nav class="nav shell" aria-label="Primary navigation">
+    <a class="brand" href="./index.html"><span class="brand-mark">TL</span><span>Triyan Agung Laksono</span></a>
+    <div class="nav-links"><a href="./index.html#about">About</a><a href="./index.html#work">Projects</a><a href="./index.html#research">Research</a><a href="./teaching.html" aria-current="page">Teaching</a></div>
+    <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle light/dark theme">◐</button>
+  </nav></header>
+
+  <main>
+    <section class="hero shell teaching-hub-hero">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="pulse"></span> PUBLIC LEARNING SPACE</div>
+        <h1>Teaching built around <span>outcomes, application & reflection.</span></h1>
+        <p class="lead">A public catalogue of course learning plans and resources designed to support classroom learning and independent study.</p>
+        <div class="hero-actions"><a class="btn primary" href="#courses">Explore courses <span>↘</span></a><a class="btn ghost" href="./index.html#teaching">Back to portfolio</a></div>
+      </div>
+      <div class="hero-visual reveal" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="core"><span>TEACH</span><strong>×</strong><span>APPLY</span></div><div class="float-tag tag-a">Outcomes</div><div class="float-tag tag-b">Activities</div><div class="float-tag tag-c">Assessment</div></div>
+    </section>
+
+    <section id="courses" class="section shell">
+      <div class="section-index reveal"><span>01</span><span>COURSE CATALOGUE</span></div>
+      <div class="section-head reveal"><h2>Courses prepared as reusable learning spaces.</h2><p>Published courses are loaded from the Teaching Hub catalogue. Course detail pages will progressively add meeting plans, public materials, assessments, and references.</p></div>
+      <div id="teachingCatalogue" class="course-grid" aria-live="polite"><p class="teaching-state">Loading published courses…</p></div>
+      <div id="teachingCatalogueError" class="privacy-note teaching-error" role="status" hidden><span>◉</span><p><strong>Course catalogue unavailable.</strong> The Teaching Hub could not safely load its public catalogue. Please try again later.</p></div>
+    </section>
+
+    <section class="section shell">
+      <div class="section-index reveal"><span>02</span><span>LEARNING APPROACH</span></div>
+      <div class="section-head reveal"><h2>Outcome → activity → assessment → reflection.</h2><p>The Teaching Hub makes the relationship between intended learning, classroom activity, evidence of learning, and reflection visible without turning this public site into an LMS.</p></div>
+      <div class="pillars">
+        <article class="pillar reveal"><div class="pillar-icon">01</div><span class="num">OUTCOME</span><h3>Know the intended learning.</h3><p>Each learning space begins with explicit outcomes rather than a collection of disconnected files.</p></article>
+        <article class="pillar reveal"><div class="pillar-icon">02</div><span class="num">ACTIVITY</span><h3>Learn by working with ideas.</h3><p>Meetings connect concepts with discussion, analysis, exercises, and practical application.</p></article>
+        <article class="pillar reveal"><div class="pillar-icon">03</div><span class="num">ASSESSMENT</span><h3>Make learning observable.</h3><p>Assessment is linked to intended outcomes while private submissions and grades remain in the institutional LMS.</p></article>
+        <article class="pillar reveal"><div class="pillar-icon">04</div><span class="num">REFLECTION</span><h3>Turn activity into understanding.</h3><p>Reflection closes the loop by connecting evidence, feedback, and the next learning step.</p></article>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="privacy-note reveal"><span>◉</span><p><strong>Public learning boundary.</strong> This Teaching Hub provides public course information and learning resources. Enrolment, attendance, quizzes, submissions, grades, student data, and authenticated learning activity remain in the institutional Moodle LMS.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer shell"><div><div class="brand footer-brand"><span class="brand-mark">TL</span><span>Triyan Agung Laksono</span></div><p>Academic × Technology × Research × Product</p></div><div class="footer-links"><a href="./index.html">Portfolio</a><a href="https://github.com/Triyan31" target="_blank" rel="noreferrer">GitHub ↗</a><a href="#courses">Courses ↑</a></div></footer>
+  <script src="./script.js"></script>
+  <script src="./teaching.js"></script>
+</body></html>
