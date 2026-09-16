@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "generated_at": "2026-09-16T08:13:38.029991+00:00",
+  "generated_at": "2026-09-16T08:14:52.460162+00:00",
   "person": "Triyan Agung Laksono",
   "policy": {
     "auto_publish": false,
@@ -21,8 +21,8 @@
     "machine_verified": 3,
     "manual_verified": 2,
     "needs_review": 0,
-    "discovered_needs_review": 6,
-    "suppressed_rejections": 11
+    "discovered_needs_review": 4,
+    "suppressed_rejections": 13
   },
   "publication_verification": [
     {
@@ -50,9 +50,28 @@
             "Ivonia Fatima Ruas da silva",
             "Wiwi Widayani"
           ]
+        },
+        {
+          "source": "openalex",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "author_match_policy": "exact_registered_name",
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "DIGITAL ACTIVITY LOCATION CLUSTERING BASED ON TWITTER GEOSPATIAL DATA FOR SPATIOTEMPORAL BUSINESS INTELLIGENCE",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Widyastuti Andriyani",
+            "Fadhlih Girindra Putra",
+            "Ivonia Fatima Ruas da silva",
+            "Wiwi Widayani"
+          ]
         }
       ],
-      "openalex_error": "HTTP Error 429: Too Many Requests",
       "recommended_status": "verified",
       "reason": "DOI, title, exact registered author identity, and year match the primary bibliographic source.",
       "status_changed": false
@@ -79,9 +98,25 @@
             "Triyan Agung Laksono",
             "Widyastuti Andriyani"
           ]
+        },
+        {
+          "source": "openalex",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "author_match_policy": "exact_registered_name",
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "Imbalanced Data Handling for Stroke Prediction Using Oversampling and Cost-Sensitive Learning",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Widyastuti Andriyani"
+          ]
         }
       ],
-      "openalex_error": "HTTP Error 429: Too Many Requests",
       "recommended_status": "verified",
       "reason": "DOI, title, exact registered author identity, and year match the primary bibliographic source.",
       "status_changed": false
@@ -112,9 +147,29 @@
             "Ali Impron",
             "Adi Kusjani"
           ]
+        },
+        {
+          "source": "openalex",
+          "doi_match": true,
+          "title_match": true,
+          "title_similarity": 1.0,
+          "author_match": true,
+          "author_match_policy": "exact_registered_name",
+          "matched_author": "Triyan Agung Laksono",
+          "author_similarity": 1.0,
+          "year_match": true,
+          "source_title": "Multi-class Imbalanced Data Classification on Statlog (Shuttle) with Gradient Boosting, SMOTE, and Random Forest",
+          "source_year": 2025,
+          "source_authors": [
+            "Triyan Agung Laksono",
+            "Bambang Purnomosidi Dwi Putranto",
+            "Dini Fakta Sari",
+            "Deborah Kurniawati",
+            "Ali Impron",
+            "Adi Kusjani"
+          ]
         }
       ],
-      "openalex_error": "HTTP Error 429: Too Many Requests",
       "recommended_status": "verified",
       "reason": "DOI, title, exact registered author identity, and year match the primary bibliographic source.",
       "status_changed": false
@@ -139,42 +194,6 @@
     }
   ],
   "discovered_candidates": [
-    {
-      "doi": "10.24815/jpsi.v10i3.24100",
-      "title": "Development of Science Digital Scrapbook as Authentic Assessment to Measure Learning Outcome of Junior High School Students",
-      "year": 2022,
-      "venue": "Jurnal Pendidikan Sains Indonesia",
-      "authors": [
-        "Agung Laksono",
-        "Arif Widiyatmoko*"
-      ],
-      "publisher": "LPPM Universitas Syiah Kuala",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": true,
-      "matched_author": "Agung Laksono",
-      "author_similarity": 0.7879,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "LPPM Universitas Syiah Kuala",
-        "venue": "Jurnal Pendidikan Sains Indonesia",
-        "work_type": "journal-article",
-        "resource_url": "https://jurnal.unsyiah.ac.id/JPSI/article/view/24100",
-        "metadata_links": [
-          "https://jurnal.unsyiah.ac.id/JPSI/article/viewFile/24100/15778"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
     {
       "doi": "10.35316/icorhestech.v1i1.5697",
       "title": "Development of an Information System for Reporting Road Damage in Bandar Lampung City",
@@ -206,6 +225,42 @@
         "resource_url": "https://journal.ibrahimy.ac.id/index.php/icorhestech/article/view/5697",
         "metadata_links": [
           "https://journal.ibrahimy.ac.id/index.php/icorhestech/article/download/5697/2432"
+        ],
+        "source": "crossref"
+      },
+      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
+    },
+    {
+      "doi": "10.59324/ejaset.2024.2(2).03",
+      "title": "Pulp and Paper Properties of Jenitri Wood (Elaeocarpus ganitrus)",
+      "year": 2024,
+      "venue": "European Journal of Applied Science, Engineering and Technology",
+      "authors": [
+        "Dwiaji Agung Laksono",
+        "Ganis Lukmandaru"
+      ],
+      "publisher": "AMO Publisher",
+      "source": "crossref-name-discovery",
+      "verification": "needs_review",
+      "identity_name_match": false,
+      "discovery_name_signal": true,
+      "matched_author": "Dwiaji Agung Laksono",
+      "author_similarity": 0.8,
+      "identity_evidence": {
+        "exact_registered_name": false,
+        "author_name": null,
+        "orcid": null,
+        "affiliations": [],
+        "source": "crossref",
+        "evidence_status": "not_established"
+      },
+      "bibliographic_evidence": {
+        "publisher": "AMO Publisher",
+        "venue": "European Journal of Applied Science, Engineering and Technology",
+        "work_type": "journal-article",
+        "resource_url": "https://ejaset.com/index.php/journal/article/view/17",
+        "metadata_links": [
+          "https://ejaset.com/index.php/journal/article/download/17/13"
         ],
         "source": "crossref"
       },
@@ -283,78 +338,6 @@
         "source": "crossref"
       },
       "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.24076/joism.2020v1i2.443",
-      "title": "METODE MYER BRIGGS TYPE INDICATOR (MBTI) UNTUK TES KEPRIBADIAN SEBAGAI MEDIA PENGEMBANGAN DIRI",
-      "year": 2020,
-      "venue": "Journal of Information System Management (JOISM)",
-      "authors": [
-        "Wisnu Agung Laksono",
-        "Yuli Astuti"
-      ],
-      "publisher": "STMIK AMIKOM Yogyakarta",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": true,
-      "matched_author": "Wisnu Agung Laksono",
-      "author_similarity": 0.8205,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "STMIK AMIKOM Yogyakarta",
-        "venue": "Journal of Information System Management (JOISM)",
-        "work_type": "journal-article",
-        "resource_url": "https://jurnal.amikom.ac.id/index.php/joism/article/view/443",
-        "metadata_links": [
-          "https://jurnal.amikom.ac.id/index.php/joism/article/download/443/205"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
-    },
-    {
-      "doi": "10.24127/armatur.v7i2.11865",
-      "title": "Analisis Penyimpangan Fasa dan Sifat Mekanik pada Baja Paduan Hasil Pengecoran Konvensional di Bengkel Tenayan Pekanbaru",
-      "year": 2026,
-      "venue": "ARMATUR : Artikel Teknik Mesin &amp; Manufaktur",
-      "authors": [
-        "Agung Laksono Yudho",
-        "Farhan Anggriawan"
-      ],
-      "publisher": "Muhammadiyah Metro University",
-      "source": "crossref-name-discovery",
-      "verification": "needs_review",
-      "identity_name_match": false,
-      "discovery_name_signal": false,
-      "matched_author": null,
-      "author_similarity": 0.0,
-      "identity_evidence": {
-        "exact_registered_name": false,
-        "author_name": null,
-        "orcid": null,
-        "affiliations": [],
-        "source": "crossref",
-        "evidence_status": "not_established"
-      },
-      "bibliographic_evidence": {
-        "publisher": "Muhammadiyah Metro University",
-        "venue": "ARMATUR : Artikel Teknik Mesin &amp; Manufaktur",
-        "work_type": "journal-article",
-        "resource_url": "https://scholar.ummetro.ac.id/index.php/armatur/article/view/11865",
-        "metadata_links": [
-          "https://scholar.ummetro.ac.id/index.php/armatur/article/download/11865/4434"
-        ],
-        "source": "crossref"
-      },
-      "reason": "Discovery/name similarity is not proof of authorship. Confirm against publisher, DOI metadata, affiliation, ORCID/author profile, or manual evidence before publishing."
     }
   ],
   "suppressed_candidates": [
@@ -422,6 +405,13 @@
       "decided_by": "Triyan31"
     },
     {
+      "doi": "10.24815/jpsi.v10i3.24100",
+      "title": "Development of Science Digital Scrapbook as Authentic Assessment to Measure Learning Outcome of Junior High School Students",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:14:47.105459+00:00",
+      "decided_by": "Triyan31"
+    },
+    {
       "doi": "10.31227/osf.io/qh94p",
       "title": "Determinan Balita Stunting di Jawa Timur: Analisis Data Pemantauan Status Gizi 2017",
       "decision": "reject",
@@ -433,6 +423,13 @@
       "title": "Meminimalkan Biaya Pengadaan Persediaan Pipa PVC SII 2” Dengan Membandingkan Metode EOQ, HSM, dan LUC",
       "decision": "reject",
       "decided_at": "2026-09-16T08:13:33.926493+00:00",
+      "decided_by": "Triyan31"
+    },
+    {
+      "doi": "10.37506/ijfmt.v15i3.15857",
+      "title": "Ecological Analysis of the Prevalence of Pulmonary  Tuberculosis in Indonesia",
+      "decision": "reject",
+      "decided_at": "2026-09-16T08:04:15.153355+00:00",
       "decided_by": "Triyan31"
     }
   ]
