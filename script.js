@@ -142,6 +142,13 @@ async function hydratePortfolio() {
   if (results[0].status === 'fulfilled') renderProjects(results[0].value);
   if (results[1].status === 'fulfilled') renderPublications(results[1].value);
   if (results[2].status === 'fulfilled') renderTeaching(results[2].value);
+  const publicationResult = results[1];
+  if (publicationResult.status === 'rejected') {
+    const container = document.querySelector('#research .publication-list');
+    if (container) {
+      container.innerHTML = '<div class="publication-error" role="status"><strong>Research registry unavailable.</strong><span>Verified publication data could not be loaded. No publication records are shown until the registry is available.</span></div>';
+    }
+  }
   results.filter((r) => r.status === 'rejected').forEach((r) => console.warn(r.reason));
 }
 
